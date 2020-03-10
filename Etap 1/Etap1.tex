@@ -1,0 +1,234 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=2.5cm,rmargin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{lastpage}
+\usepackage{indentfirst}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{hyperref} 
+\usepackage{xcolor}
+\usepackage{tikz}
+\frenchspacing
+\pagestyle{fancyplain}
+\fancyhf{}
+
+\usepackage{setspace}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\newcommand{\degree}{\ensuremath{^{\circ}}} 
+\fancyfoot[L]{E-Biznes: Zbigniew Nowacki, Karol Podlewski, Patrycja Szczakowska}
+\fancyfoot[R]{\thepage\ / \pageref{LastPage}}
+
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\begin{tabular}{rcl}
+\begin{tabular}{|r|}
+\hline \\
+\large{\underline{234102~~~~~~~~~~~~~~~~~~~~~~~} }\\
+\small{\textit{Numer indeksu}}\\
+\large{\underline{Zbigniew Nowacki~~~~~~~~} }\\
+\small{\textit{Imię i nazwisko}}\\\\ \hline
+\end{tabular} 
+&
+\begin{tabular}{|r|}
+\hline \\
+\large{\underline{234106~~~~~~~~~~~~~~~~~~~~~~~} }\\
+\small{\textit{Numer indeksu}}\\
+\large{\underline{Karol Podlewski~~~~~~~~~~~} }\\
+\small{\textit{Imię i nazwisko}}\\\\ \hline
+\end{tabular} 
+&
+\begin{tabular}{|r|}
+\hline \\
+\large{\underline{234121~~~~~~~~~~~~~~~~~~~~~~~} }\\
+\small{\textit{Numer indeksu}}\\
+\large{\underline{Patrycja Szczakowska~~~~} }\\
+\small{\textit{Imię i nazwisko}}\\\\ \hline
+\end{tabular} 
+
+\end{tabular}
+~\\~\\~\\ 
+\end{center}
+\begin{tabular}{ll}
+\LARGE{\textbf{Kierunek}}& \LARGE{Informatyka Stosowana} \\
+\LARGE{\textbf{Stopień}}& \LARGE{II} \\
+\LARGE{\textbf{Specjalizacja}}& \LARGE{Data Science} \\
+\LARGE{\textbf{Semestr}}& \LARGE{1} \\\\
+\LARGE{\textbf{Data oddania}}& \LARGE{19 marca 2020} \\\\\\\\\\\\\\
+\end{tabular}
+
+\begin{center}
+\textbf{\huge{E-Biznes}}
+\textbf{\LARGE{\\Etap 1: Analiza i specyfikacja}}
+\textbf{\Huge{\\~\\~\\System rezerwacji\\obiektów sportowych\\~\\ JASTRZĘBIK}} 
+\end{center}
+
+\end{titlepage}
+
+\setcounter{page}{2}
+\setstretch{1.5}
+
+\tableofcontents
+\newpage
+
+\section{Charakterystyka wybranej branży}
+
+\section{Opis firmy i jej działalności}
+
+\section{Kontekst funkcjonowania systemu}
+
+\subsection{Cel}
+
+System \textbf{Jastrzębik} powstał w celu ułatwienia procesu rezerwacji obiektów sportowych na terenie całego kraju. Dzięki dużej bazie obiektów oraz jednym portalu rezerwacyjnym wynajem stanie się dużo prosty oraz bardziej intuicyjny. 
+
+\section{Funkcje systemu}
+
+\section{Charakterystyka użytkowników}
+
+\section{Założenia i zależności systemu}
+
+\section{Wymagania funkcjonalne i niefunkcjonalne}
+
+\subsection{Wymagania funkcjonalne}
+
+\subsection{Wymagania niefunkcjonalne}
+
+\section{Aspekty prawne dotyczące prowadzonej działalności}
+
+\newpage
+
+\newpage
+\section {PSI: Wprowadzenie}
+
+\subsection {Cel dokumentu}
+Celem dokumentu jest przeprowadzenie analizy i określenie specyfikacji systemu umożliwiającego rezerwowanie boisk sportowych. Zaprezentowane zostały opisy wymaganych funkcjonalności oraz przypisane uprawnienia dla danych użytkowników systemu.
+
+\subsection {Zakres produktu}
+System skierowany będzie do trzech grup użytkowników:
+\begin{itemize}
+	\item Wszystkich osób powyżej 12 roku życia, zamieszkałych lub przebywających na terenie Polski, zainteresowanych wynajęciem boiska sportowego w Łodzi w celu aktywnego spędzenia czasu. Otrzymają ograniczony dostęp do funkcjonalności systemu.
+	\item Animatorów sportowych sprawujących pieczę nad danym boiskiem. Będą oni zarządzać system rezerwacji i otrzymają szeroki zakres uprawnień.
+	\item Administratorów odpowiedzialnych za funkcjonowanie całego systemu. Będą oni posiadać pełen zakres uprawnień.
+\end{itemize}
+
+\subsection {Definicje, akronimy i skróty}
+\begin{itemize}
+	\item Animator - osoba sprawująca pieczę nad danym boiskiem sportowym odpowiedzialna za udostępnianie boisk, przebywająca w izbie animatorów.
+	\item Izba animatorów - wyznaczone pomieszczenie dla animatorów na terenie boiska.
+	\item Administrator - osoba sprawująca władzę nad systemem. Posiada pełen zakres uprawnień.
+	\item Boisko - obiekt sportowy z wydzielonym terenem. Może zostać zarezerwowane. Występują boiska do koszykówki oraz piłki nożnej.
+	\item Rezerwacja - jest to wynajęcie danego boiska sportowego na okres od 60 do 120 minut. Możliwe jest wykonanie tylko jednej rezerwacji w ciągu dnia. Rezerwacja musi zostać wykonana minimum 24 godziny wcześniej. Odwołanie rezerwacji musi zostać wykonane minimum 12 godzin wcześniej. Rezerwacja jest bezpłatna.
+	\item Użytkownik - osoba powyżej 12 roku życia.
+\end{itemize}
+
+\subsection {Odwołania do literatury}
+Przykładem istniejącego portalu umożliwiającego rezerwację boiska jest strona  \href{https://www.ostroleka.pl/boiska/}{\textcolor{blue}{Urzędu Miejskiego Ostrołęki}}.
+
+\subsection {Omówienie dokumentu}
+Dokument opisuje w szczegółowy sposób zadania i wymagane funkcjonalności systemu. Składa się z czterech części.
+\begin{itemize}
+	\item Część pierwsza  została podzielona na pięć podsekcji i poświęcona jest przedstawieniu idei systemu. Ma ona za zadanie przygotować do zaznajomienia się z podstawowymi definicjami związanymi z systemem. Wyjaśnia jaki jest cel dokumentu, do kogo skierowany jest produkt, objaśnia dane definicje oraz akronimy, na przykładzie źródła elektronicznego odwołuje się do istniejącego już portalu umożliwiającego rezerwację boisk. 
+	\item Druga część dokumentu zawiera ogólny zarys systemu Jastrzębik. Część ta została podzielona na pięć podsekcji, które objaśniają kontekst funkcjonowania produktu, a także jego główne funkcje, przedstawiają charakterystykę użytkowników oraz nałożone ograniczenia wraz z założeniami i zależnościami występującymi w systemie.
+	\item Część trzecia poświęcona jest wymaganiom funkcjonalnym występującym w systemie. Opisuje czynności i operacje wykonywane przez priodukt.
+	\item Część czwarta przedstawia wymagania niefunkcjonalne pojawiające się w systemie. Opisuje ograniczenia, przy których produkt powinien realizować swoje funkcje.
+\end{itemize}
+
+\section {PSI: Opis ogólny}
+
+\subsection {Kontekst funkcjonowania}
+System Jastrzębik umożliwiać będzie rezerwację wybranego boiska sportowego znajdującego się na terenie miasta Łodź. Wynajęcie boiska będzie możliwe na okres od 60 do 120 minut. Rezerwację będzie można wykonać na 24 godziny przed planowanym wynajęciem boiska wcześniej.Odwołanie rezerwacji  będzie możliwe do 12 godzin przed planowanym wynajęciem boiska. Rezerwacja boiska jest bezpłatna. Dokonując rezerwacji użytkownik będzie zobowiązany do pozostawienia boiska w nienaruszonym stanie. W przypadku dokonania, bądź odkrycia szkody, użytkownik będzie zobowiązany do zgłoszenia szkody bezpośrednia do Animatora. 
+\\\indent W celu zarejestrowania się w systemie użytkownik będzie zobowiązany do podania swojego imienia, nazwiska, numeru PESEL, miejsca zamieszkania oraz numeru telefonu lub adresu mailowego. Po wykonaniu uwierzytelnienia użytkownik będzie miał możliwość złożenia elektronicznego wniosku wynajęcia danego boiska sportowego o wybranej porze. Wniosek rozpatrywany będzie zgodnie z regulaminem obiektu, wg daty złożenia wniosku i spełnieniem wymogów formalnych, bezpośrednio przez animatorów przypisanych do danych boisk sportowych. Pierwszeństwo rezerwacji otrzymają osoby korzystające z boisk w ubiegłych miesiącach. 
+\\\indent Animatorzy będą upoważnieni do wglądu w szereg szczegółowych informacji o rezerwacjach, rezerwujących oraz będą posiadali możliwość wprowadzania zmian w harmonogramie boisk. Będą sprawować pieczę nad boiskami sportowymi oraz będą odpowiedzialni za udostępnianie obiektów sportowych. Będą odpowiedzialni za odbieranie informacji na temat dokonanych szkód na terenie boiska.
+\\\indent Jakiekolwiek nieprawidłowości związane z funkcjonowaniem systemu będą rozpatrywane przez administratorów. 
+
+\subsection {Charakterystyka użytkowników}
+Docelowymi użytkownikami rezerwującymi boiska sportowe są osoby powyżej 12 roku życia zamieszkałe lub przebywające na terenie Polski. Będą oni posiadali ograniczone uprawnienia w systemie - możliwość złożenia wniosku o wynajęcie danego boiska i ewentualne późniejsze jego edytowanie lub anulowanie.
+\\\indent
+Użytkownikami odpowiedzialnymi za rozpatrywanie wpływających rezerwacji będą wcześniej wybrani animatorzy boisk. Będą oni posiadali szeroki zakres uprawnień w systemie - zatwierdzanie lub odrzucanie rezerwacji, uaktualnianie informacji na temat boisk, ustalanie harmonogramu dostępności boisk.
+\\\indent Użytkownikami odpowiedzialnymi za kontrolę nad funkcjonowaniem całego systemu będą administratorzy. Będą oni rozpatrywać wszelkie wykryte nieprawidłowości w produkcie. Otrzymają pełen zakres uprawnień.
+
+\subsection {Główne funkcje produktu}
+\begin{itemize}
+	\item Zarejestrowanie się w systemie.
+	\item Możliwość złożenia elektronicznego wniosku o rezerwację boiska sportowego.
+	\item Sprawdzanie stanu złożonej wcześniej rezerwacji.
+	\item Modyfikacja rezerwacji - edytowanie, anulowanie wniosku.
+	\item Wgląd do harmonogramu dostępności boisk.
+\end{itemize} 
+
+\subsection {Ograniczenia}
+System musi spełniać założenia zgodne z rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z 27.04.2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie o ochronie danych) (Dz. U. UE. L. z 2016 r. Nr 119, str. 1).
+
+\subsection {Założenia i zależności}
+\begin{itemize}
+	\item Warunkiem złożenia elektronicznej rezerwacji będzie 			wcześniejsze zarejestrowanie się w systemie, a następnie uwierzytelnienie. Tylko osoby, który ukończyły 12 rok życia będą mogły się zarejestrować
+	\item Nie będzie możliwe zarezerwowanie boiska, jeśli w danym momencie jest już wynajęte.
+	\item Nie będzie możliwe zarezerwowanie boiska w godzinach 22-6.
+	\item Nie będzie możliwe zarezerwowanie boiska w sezonie zimowym 1.12 - 28.02.
+	\item Dwukrotna nieobecność podczas zarezerwowanego terminu będzie skutkować zablokowaniem możliwości rezerwacji boisk na okres 30 dni.
+\end{itemize}
+
+\section {PSI: Wymagania funkcjonalne}
+
+
+\begin{tabular}{|p{0.5\linewidth}|ccc|}
+\hline
+Wymaganie & Użytkownik & Animator & Administrator \\
+\hline
+\hline
+Rejestracja & \checkmark & & \checkmark * \\
+\hline
+Logowanie oraz wylogowanie się z systemu & \checkmark & \checkmark & \checkmark \\
+\hline
+Wgląd do harmonogramu dostępności boisk & \checkmark & \checkmark & \checkmark \\
+\hline
+Rezerwacja wybranego boiska & \checkmark & & \checkmark \\
+\hline
+Modyfikacja rejestracji & \checkmark & & \checkmark \\
+\hline
+Anulowanie rejestracji & \checkmark & & \checkmark \\
+\hline
+Blokada dostępności danego boiska & & \checkmark ** & \checkmark \\
+\hline
+Dostęp do zdjęć dostępnych boisk sportowych & \checkmark & \checkmark & \checkmark \\
+\hline
+Dostęp do panelu kontaktu & \checkmark & \checkmark & \checkmark \\
+\hline
+Zgłaszanie nieobecnośći podczas rezerwacji & & \checkmark & \checkmark \\
+\hline
+Wystawienie oceny dla danego użytkownika & & \checkmark & \checkmark \\
+\hline 
+Wystawienie oceny dla danego animatora & \checkmark & & \checkmark \\
+\hline 
+Zgłoszenie problemu na danym boisku & \checkmark & \checkmark & \checkmark \\
+\hline 
+Blokada konta użytkownika & & \checkmark *** & \checkmark \\
+\hline
+\end{tabular}
+\\ \\ \\
+\small{*  Administrator może tworzyć konta innych administratorów oraz animatorów, ale nie da się utworzyć samemu konta administratora
+\\ \\ ** Animator może zablkować tylko swoje boisko
+\\ \\ *** Administrator musi zatwierdzić blokadę użytkownika}
+
+\section {PSI: Wymagania niefunkcjonalne}
+\begin{enumerate}
+	\item Użytkownik nie ma możliwości wglądu w konta innych użytkowników.
+	\item Uzytkownik podczas rejestracji musi mieć ukończone co najmniej 12 lat.
+	\item Użytkownik nieuprzywilejowany nie może wprowadzać zmian w rezerwacjach innego użytkownika.
+	\item Jeden użytkownik może posiadać tylko jedno konto.
+	\item W przypadku dwóch nieobecnośći przy zarezerwowanym boisku użytkownik ma blokowaną możliwość rezerwowania boisk na okres 30 dni.
+	\item W przypadku dokonania lub odkrycia szkody na terenie boiska, użytkownik zobowiązany jest do natychmiastowego zgłoszenia takiego incydentu do animatora. 
+	\item W przypadku, gdy podczas użytkowania obiekt sportowy zostanie uszkodzony, rezerwujący zobowiązany jest do pokrycia kosztów naprawy lub wymiany. 
+\end{enumerate}
+
+\end{document}
