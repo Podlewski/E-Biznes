@@ -1,0 +1,254 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[verbose,a4paper,tmargin=2cm,bmargin=2cm,lmargin=2.5cm,rmargin=2.5cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{lastpage}
+\usepackage{indentfirst}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{hyperref} 
+\usepackage{xcolor}
+\usepackage{tikz}
+\frenchspacing
+\pagestyle{fancyplain}
+\fancyhf{}
+
+\usepackage{setspace}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\newcommand{\degree}{\ensuremath{^{\circ}}} 
+\fancyfoot[L]{E-Biznes: Zbigniew Nowacki, Karol Podlewski, Patrycja Szczakowska}
+\fancyfoot[R]{\thepage\ / \pageref{LastPage}}
+
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+\begin{tabular}{rcl}
+\begin{tabular}{|r|}
+\hline \\
+\large{\underline{234102~~~~~~~~~~~~~~~~~~~~~~~} }\\
+\small{\textit{Numer indeksu}}\\
+\large{\underline{Zbigniew Nowacki~~~~~~~~} }\\
+\small{\textit{Imię i nazwisko}}\\\\ \hline
+\end{tabular} 
+&
+\begin{tabular}{|r|}
+\hline \\
+\large{\underline{234106~~~~~~~~~~~~~~~~~~~~~~~} }\\
+\small{\textit{Numer indeksu}}\\
+\large{\underline{Karol Podlewski~~~~~~~~~~~} }\\
+\small{\textit{Imię i nazwisko}}\\\\ \hline
+\end{tabular} 
+&
+\begin{tabular}{|r|}
+\hline \\
+\large{\underline{234121~~~~~~~~~~~~~~~~~~~~~~~} }\\
+\small{\textit{Numer indeksu}}\\
+\large{\underline{Patrycja Szczakowska~~~~} }\\
+\small{\textit{Imię i nazwisko}}\\\\ \hline
+\end{tabular} 
+
+\end{tabular}
+~\\~\\~\\ 
+\end{center}
+\begin{tabular}{ll}
+\LARGE{\textbf{Kierunek}}& \LARGE{Informatyka Stosowana} \\
+\LARGE{\textbf{Stopień}}& \LARGE{II} \\
+\LARGE{\textbf{Specjalizacja}}& \LARGE{Data Science} \\
+\LARGE{\textbf{Semestr}}& \LARGE{1} \\\\
+\LARGE{\textbf{Data oddania}}& \LARGE{19 marca 2020} \\\\\\\\\\\\\\
+\end{tabular}
+
+\begin{center}
+\textbf{\huge{E-Biznes}}
+\textbf{\LARGE{\\Etap 1: Analiza i specyfikacja}}
+\textbf{\Huge{\\~\\~\\System rezerwacji\\obiektów sportowych\\~\\ JASTRZĘBIK}} 
+\end{center}
+
+\end{titlepage}
+
+\setcounter{page}{2}
+\setstretch{1.4}
+
+\tableofcontents
+\setstretch{1.2}
+\newpage
+
+\section{Charakterystyka wybranej branży}
+
+    \subsection{Sport w Polsce}
+    
+    Zgodnie z danymi udostępnionymi przez Główny Urząd Statystyczny (GUS) w 2016 r. w Polsce działało 14,9 tys. klubów sportowych. Ich liczba w stosunku do 2014 r. wzrosła o 6,1\%. W okresie 1994-2016 liczba klubów ogółem wzrosła ponad pięciokrotnie (począwszy od 1994 r. zaczęły w Polsce powstawać uczniowskie i wyznaniowe kluby sportowe), a liczba ćwiczących wzrosła trzykrotnie. W omawianym okresie systematycznie przybywało klubów sportowych i osób ćwiczących. 
+    
+    Według GUS w 2016 r. kluby sportowe liczyły ponad 1 019,6 tys. członków (wzrost o 8,3 \%w stosunku do 2014 r.), a ćwiczyło w nich ponad 1 030,2 tys. osób (wzrost o 12,1\%w stosunku do 2014 r.). Podobnie jak w latach poprzednich zdecydowaną większość ćwiczących stanowili mężczyźni – 74,8\%. Także niezmiennie wśród ćwiczących dominuje młodzież do 18 lat – 71,3\%. 
+
+    Niezmiennie w Polsce wśród ćwiczących najpopularniejsze są sporty drużynowe (58,4\% osób ćwiczących), a spośród nich piłka nożna, którą uprawia 39,5\% ćwiczących (łącznie z piłką nożną plażową i piłką nożną halową – 40,8\%). Pod względem liczby ćwiczących drugie miejsce zajmuje piłka siatkowa - 7,5\% ćwiczących (łącznie z piłką siatkową plażową - 7,8\%). Kolejne miejsca pod względem liczby ćwiczących zajmują koszykówka, pływanie i lekkoatletyka (po 4,0\%) oraz karate (łącznie z karate tradycyjnym) - 3,9\%. 
+
+    \subsection{Systemy do zarządzania obiektami sportowymi}
+    
+    \textbf{Jastrzębik} skupiony jest na oferowaniu użytkownikowi końcowemu obiektów takich jak boiska, korty tenisowe, tory, strzelnice.
+    Konkurencyjne systemy to na przykład:
+    
+    \begin{itemize}
+        \item Raz Dwa Projekt -- system rezerwacji kortów tenisowych i squashowych oraz niezbędnego sprzętu z obsługą płatności. Oferuje również pomoc w znalezieniu partnera do gry.
+        \\ W porównaniu do naszego przedsięwzięcia jest on mało zróżnicowany pod względem typów obiektów sportowych.
+        \item Rezerwuj Sport -- system rezerwacji oraz kupowania karnetów do obiektów sportowych na terenie Wrocławia.
+        \\ Głównym minusem tego systemu jest fakt, że dotyczy on obiektów zaledwie w jednym mieście.
+        \item Asysto -- oferujący oprogramowanie internetowe pozwalające na uruchomienie rezerwacji online obiektów sportowych na swojej stronie. Jednak nie jest on portalem rezerwacyjnym.
+    \end{itemize}
+    
+\section{Opis firmy i jej działalności}
+
+    Firma \textbf{Jastrzębik} będzie oferować możliwość rezerwacji obiektów sportowo-rekreacyjnych poprzez aplikację internetową. Obiekty te będą one w posiadaniu konkretnych animatorów, którzy mogą wyrazić chęć zarządzania nimi za pomocą niniejszego systemu.
+    Użytkownik może zarezerwować taki obiekt w ustalonym czasie za co animator pobiera opłatę.
+    Źródłem dochodów firmy będzie prowizja pobierana od animatorów za rezerwacje oraz opłata za wyświetlane za pośrednictwem witryny internetowej reklamy.
+    Głównym zadaniem firmy będzie utrzymanie sprawnego działania serwisu internetowego dokonywane poprzez zatrudnionych administratorów. Dodatkowo firma będzie odpowiedzialna za wprowadzanie aktualizacji do wydanego już oprogramowania.
+
+\section{Kontekst funkcjonowania systemu}
+
+    \subsection{Cel} 
+
+    System \textbf{Jastrzębik} to uniwersalna platforma ułatwiająca proces rezerwacji obiektów sportowych na terenie całego kraju. Dzięki dużej bazie obiektów oraz jednym portalu rezerwacyjnym wynajem stanie się dużo prostszy oraz bardziej intuicyjny.
+
+    \begin{figure}[ht] 
+    	\begin{center}
+    		\includegraphics[width=0.5\textwidth]{Obrazki/Logo.png}
+            \caption{Logo \textbf{Jastrzębika}}
+    	\end{center}
+    \end{figure}
+
+    \subsection{Zakres}
+    
+    Zakresem działania systemu jest wynajem obiektów sportowych. Jedna strona, animator, udostępnia obiekt do najmu, druga, użytkownik, dokonuje rezerwacji. Nad poprawnością przeprowadzanych operacji będzie czuwał administrator systemu.
+
+    \subsection{Procesy}
+    Wśród najważniejszych procesów znajdą się:
+    
+    \begin{itemize}
+        \item Kreacja oraz udostępnianie swoich obiektów przez animatorów,
+        \item Utworzenie rezerwacji oraz administracja nią,
+        \item Zgłaszanie nieprawidłowości.
+    \end{itemize}
+
+    \subsection{Dokumenty}    
+    
+    Serwis \textbf{Jastrzębika} zapewni dostęp do następujących dokumentów:
+    \begin{itemize}
+        \item Regulamin serwisu, zawierający m.in. informację o ochronie danych osobowych,
+        \item Regulamin tworzenia i zarządzania obiektami sportowymi,
+        \item Regulamin wynajmu obiektów sportowych.
+    \end{itemize}
+    
+    Ponadto, animatorzy mają obowiązek udostępnienia regulaminu każdego swojego obiektu.
+    
+
+\section{Funkcje systemu}
+
+    Wszyscy korzystający z systemu mają możliwość:
+    \begin{itemize}
+        \item[]
+        \begin{itemize}
+            \item Logowania i rejestracji,
+            \item Podglądu i filtrowania obiektów.
+        \end{itemize}
+    \end{itemize}
+    
+    \par Pozostałe funkcje są zależne od roli w systemie według klasyfikacji poniżej:
+    \begin{itemize}
+        \item Użytkownik
+            \begin{itemize}
+                \item Przeglądanie i filtrowanie obiektów oraz ich harmonogramu dostępności,
+                \item Tworzenie, modyfikacja i anulowanie rezerwacji obiektów,
+                \item Kontakt z animatorami oraz administracją.
+            \end{itemize}
+        \item Animator
+            \begin{itemize}
+                \item Tworzenie obiektów sportowych w systemie,
+                \item Zarządzanie obiektami oraz ich dostępnością,
+                \item Usunięcie rezerwacji w przypadku sytuacji kryzysowych.
+            \end{itemize}
+        \item Administrator
+            \begin{itemize}
+                \item Zmiana harmonogramu dostępności obiektów,
+                \item Blokada konta.
+            \end{itemize}
+    \end{itemize}
+
+
+\section{Charakterystyka użytkowników}
+
+Docelowymi użytkownikami systemu są animator udostępniający obiekty sportowe, użytkownik je rezerwujący oraz administrator. Aby skorzystać z systemu każdy użytkownik musi posiadać aktywne konto.
+
+Jako \textbf{użytkownika rezerwującego} obiekty sportowe rozumiemy osoby powyżej 16 roku życia zamieszkałe lub przebywające na terenie Polski. Będą oni posiadali ograniczone uprawnienia w systemie - możliwość przeglądania dostępnych kompleksów sportowych, wynajęcie danego obiektu i ewentualne późniejsze edytowanie lub anulowanie rezerwacji. Dodatkowo użytkownik może zgłosić animatora. 
+
+\textbf{Animatorzy} to użytkownicy udostępniający do wynajmu swoje kompleksy sportowe. Posiadają oni wgląd do własnych oraz możliwość przeglądania wszystkich obiektów. Będą oni posiadali szeroki zakres uprawnień w systemie - przegląd oraz anulowanie rezerwacji powiązanych z ich obiektami, uaktualnianie informacji na temat własnych obiektów oraz ustalanie harmonogramu dostępności. Dodatkowo animator może zgłosić użytkownika rezerwującego. 
+
+Użytkownikami odpowiedzialnymi za kontrolę nad funkcjonowaniem całego systemu będą \textbf{administratorzy}. Będą oni rozpatrywać wszelkie wykryte nieprawidłowości w produkcie. Otrzymają pełen zakres uprawnień, włączając w to zarządzanie wszystkimi obiektami sportowymi, a także kontami użytkowników. Administrator jako jedyny może zdjąć lub nałożyć blokadę.
+
+\section{Założenia i zależności systemu}
+
+Aplikacja, aby spełnić wszystkie swoje założenia funkcjonalne i niefunkcjonalne, będzie potrzebowała komunikować się z systemami zewnętrznymi. 
+
+Jednym z nich będzie serwis internetowy umożliwiający wyszukiwanie obiektów i oglądanie map. Najpopularniejszym tego typu systemem, który prawdopodobnie zostanie wykorzystany w aplikacji, jest serwis Google Maps. Umożliwia on udostępnianie map we własnej aplikacji. Użytkownik będzie mógł sprawdzić położenie danego obiektu - przy jego podglądzie będzie wyświetlana mapa z jego oznaczeniem.
+
+Drugim z systemów zewnętrznych wykorzystywanych w projektowanej aplikacji będzie serwis umożliwiający dokonanie płatności internetowych. Użytkownik będzie mógł opłacić stworzone przez siebie rezerwacje. Jednym z serwisów dającym możliwość przeprowadzenia płatności, który z dużym prawdopodobieństwem zostanie wykorzystany w aplikacji, jest Paypal - przedsiębiorstwo oferujące usługi płatnicze umożliwiające przedsiębiorcom i konsumentom posiadającym adres e-mail wysyłanie oraz odbieranie płatności przez Internet.
+
+Oba wymienione systemy zewnętrzne oferują przystępne interfejsy programistyczne.
+
+\section{Wymagania funkcjonalne i niefunkcjonalne}
+
+Zaimplementowane rozwiązanie powinno spełniać szereg wymagań funkcjonalnych oraz niefunkcjonalnych, aby zapewnić poprawne działanie aplikacji.
+
+    \subsection{Wymagania funkcjonalne} 
+
+    \begin{tabular}{|p{0.45\linewidth}|ccc|}
+    \hline
+    Wymaganie & Użytkownik & Animator & Administrator \\ \hline \hline
+    Rejestracja & \checkmark & \checkmark & \\ \hline
+    Logowanie oraz wylogowanie się z systemu & \checkmark & \checkmark & \checkmark \\ \hline
+    Utworzenie obiektu sportowego & & \checkmark & \\ \hline
+    Podgląd obiektów & \checkmark & \checkmark & \checkmark \\ \hline
+    Podgląd własnych obiektów & & \checkmark & \\ \hline
+    Zmiana harmonogramu dostępności obiektów & & \checkmark & \checkmark* \\ \hline
+    Wgląd do harmonogramu dostępności obiektów & \checkmark & \checkmark & \checkmark \\ \hline
+    Rezerwacja wybranego obiektu & \checkmark & & \\ \hline
+    Podgląd rezerwacji & \checkmark & \checkmark & \checkmark \\ \hline
+    Opłacenie rezerwacji & \checkmark & & \\ \hline
+    Modyfikacja rezerwacji & \checkmark & & \checkmark* \\ \hline
+    Anulowanie rezerwacji & \checkmark & \checkmark** & \checkmark* \\ \hline
+    Dostęp do panelu kontaktu & \checkmark & \checkmark & \checkmark \\ \hline
+    Zgłaszanie użytkownika / animatora & \checkmark & \checkmark & \\ \hline
+    Blokada konta użytkownika & & & \checkmark \\ \hline
+    \end{tabular}
+    \\
+
+    \small{* Administrator może zmienić harmonogram oraz modyfikować lub usuwać rezerwacje np. w przypadku wydanego przez Państwo rozporządzenia o zakazie zgromadzeń publicznych lub w innych określonych w regulaminie okolicznościach czy zablokowania użytkowników bądź animatorów z powodu naruszania regulaminu.}
+    
+    \small{** Animator ma prawo do usunięcia rezerwacji z powodu nieosiągalności obiektu w dowolnym momencie, co zawsze będzie się wiązało z przynajmniej pełnym zwrotem kosztów rezerwacji. }
+
+    \subsection{Wymagania niefunkcjonalne}
+
+    \begin{enumerate}
+    	\item Użytkownik nie ma możliwości wglądu w konta innych użytkowników.
+    	\item Użytkownik podczas rejestracji musi mieć ukończone co najmniej 16 lat.
+    	\item Jedna osoba fizyczna może posiadać tylko jedno konto.
+    	\item W przypadku zgłoszeń użytkownika/animatora blokowana jest możliwość rezerwowania/udostępniania obiektów sportowych zgodnie z zasadami określonymi w regulaminie.
+    	\item W przypadku dokonania lub odkrycia szkody na terenie obiektu sportowego, użytkownik zobowiązany jest do natychmiastowego zgłoszenia takiego incydentu do animatora.
+    	\item W przypadku, gdy podczas użytkowania obiekt sportowy zostanie uszkodzony, rezerwujący zobowiązany jest do pokrycia kosztów naprawy lub wymiany
+    \end{enumerate}
+
+
+\section{Aspekty prawne dotyczące prowadzonej działalności}
+
+System rezerwacji \textbf{Jastrzębik} udostępni regulamin dla użytkowników oraz animatorów, którego przestrzeganie będzie koniecznie w celu wynajmu i rezerwacji obiektów sportowych. System zostanie stworzony zgodnie z ogólnym rozporządzeniem o ochronie danych, a na stronie zostanie wyświetlony komunikat o zbieranych przez witrynę ciasteczkach. Każda osoba będzie mogła znaleźć dane firmy takie jak nazwa, adres, właściciele, numer NIP czy REGON.
+
+
+\end{document}
