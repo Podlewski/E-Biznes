@@ -3,10 +3,8 @@ package com.hawk.hawkapp.controller;
 import com.hawk.hawkapp.model.Facility;
 import com.hawk.hawkapp.service.intf.FacilityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +14,28 @@ public class FacilityController {
 
     @Autowired
     private FacilityService facilityService;
+
+    @GetMapping
+    List<Facility> findAll() {
+        return facilityService.findAll();
+    }
+
+    @GetMapping(value = "/{id}")
+    Facility findById(@PathVariable("id") Long id) {
+        return facilityService.findById(id);
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void delete(@PathVariable("id") Long id) {
+        facilityService.delete(id);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Facility add(@RequestBody Facility facility) {
+        return facilityService.add(facility);
+    }
 
     @GetMapping(value = "/filter") // /facility/filter?search=address==address
     List<Facility> filter(@RequestParam(value = "search") String query) {
