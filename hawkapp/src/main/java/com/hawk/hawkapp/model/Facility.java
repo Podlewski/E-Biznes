@@ -34,8 +34,13 @@ public class Facility extends BaseEntity {
     @Column
     private String city;
 
-    @Column
+    @JsonIgnore
+    @Column (name = "sport_id")
     private String sportId;
+
+    @ManyToOne
+    @JoinColumn(name = "sport_id", insertable = false, updatable = false)
+    private Sport sport;
 
     @Column
     private String phone;
