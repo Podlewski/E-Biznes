@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
+import java.security.InvalidParameterException;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,6 +26,15 @@ public class ReservationServiceImpl extends BaseServiceImpl<ReservationRepositor
                                   EntityManager entityManager) {
         super(reservationRepository);
         this.entityManager = entityManager;
+    }
+
+    @Override
+    public Reservation add(Reservation reservation) {
+        if (reservation.getUser().getIsBlocked()) {
+            throw new InvalidParameterException();
+        }
+
+        return repository.save(reservation);
     }
 
     @Override
