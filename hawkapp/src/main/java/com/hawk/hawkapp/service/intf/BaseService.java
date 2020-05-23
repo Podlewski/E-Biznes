@@ -13,4 +13,6 @@ public interface BaseService<TModel> {
     TModel update(TModel obj, Long id);
 
     void delete(Long id);
+
+    List<TModel> filter(String query);
 }

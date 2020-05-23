@@ -2,6 +2,8 @@ package com.hawk.hawkapp.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.hawk.hawkapp.model.utils.FacilitiesSerializer;
+import com.hawk.hawkapp.model.utils.UserRoleConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -33,7 +35,7 @@ public class User extends BaseEntity {
     private String lastName;
 
     @Column
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Europe/Berlin")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Europe/Berlin")
     private Timestamp birthDate;
 
     @Column

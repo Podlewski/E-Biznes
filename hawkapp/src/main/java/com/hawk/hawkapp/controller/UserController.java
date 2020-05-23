@@ -28,7 +28,7 @@ public class UserController {
         userService.delete(id);
     }
 
-    @PostMapping(value = "")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public User add(@RequestBody User user) {
         return userService.add(user);
@@ -47,7 +47,7 @@ public class UserController {
 
     @PutMapping(value = "/{id}")
     public ResponseEntity<Void> update(@RequestBody User user,
-                                               @PathVariable("id") Long id) {
+                                       @PathVariable("id") Long id) {
         User userById = userService.findById(id);
 
         if (userById == null) {

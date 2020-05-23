@@ -3,9 +3,13 @@ package com.hawk.hawkapp.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.hawk.hawkapp.model.utils.ReservationFacilitySerializer;
+import com.hawk.hawkapp.model.utils.ReservationStatusConverter;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -30,11 +34,12 @@ public class Reservation extends BaseEntity {
 
     @JsonIgnore
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
     @Column
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone="Europe/Berlin")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "Europe/Berlin")
     private Timestamp creationDate;
 
     @Column
@@ -42,6 +47,6 @@ public class Reservation extends BaseEntity {
     private ReservationStatus status;
 
     @Column
-    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm", timezone="Europe/Berlin")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Europe/Berlin")
     private Timestamp reservationDate;
 }

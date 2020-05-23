@@ -27,6 +27,7 @@ public class FacilityServiceImpl extends BaseServiceImpl<FacilityRepository, Fac
         this.entityManager = entityManager;
     }
 
+    @Override
     public List<Facility> filter(String query) {
         RSQLVisitor<CriteriaQuery<Facility>, EntityManager> rsqlVisitor = new JpaCriteriaQueryVisitor<>();
         CriteriaQuery<Facility> criteriaQuery = new RSQLParser().parse(query).accept(rsqlVisitor, entityManager);
