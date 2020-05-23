@@ -1,5 +1,6 @@
 package com.hawk.hawkapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -13,8 +14,13 @@ import java.sql.Timestamp;
 @Entity
 public class Facility extends BaseEntity {
 
-    @Column
+    @Column(name = "animator_id")
     private String animatorId;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "animator_id", insertable = false, updatable = false)
+    private User animator;
 
     @Column
     private String name;

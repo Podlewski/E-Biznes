@@ -1,14 +1,14 @@
 package com.hawk.hawkapp.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Convert;
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
@@ -41,4 +41,11 @@ public class User extends BaseEntity {
 
     @Column
     private Boolean isBlocked = Boolean.FALSE;
+
+    @JsonSerialize(using = FacilitiesSerializer.class)
+    @OneToMany(mappedBy = "animator",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            orphanRemoval = true)
+    private List<Facility> facilities;
 }
