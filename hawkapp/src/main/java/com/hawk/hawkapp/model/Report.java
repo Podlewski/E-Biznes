@@ -14,10 +14,10 @@ import javax.persistence.Entity;
 public class Report extends BaseEntity {
 
     @Column
-    private String reporterId;
+    private Long reporterId;
 
     @Column
-    private String reportedId;
+    private Long reportedId;
 
     @Column(columnDefinition = "TEXT")
     private String message;
