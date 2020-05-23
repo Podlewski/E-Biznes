@@ -16,12 +16,12 @@ public class ReportController {
     private ReportService reportService;
 
     @GetMapping(value = "/{id}")
-    Report fingById(@PathVariable("id") Long id) {
+    Report findById(@PathVariable("id") Long id) {
         return reportService.findById(id);
     }
 
     @GetMapping(value = "")
-    List<Report> fingAll() {
+    List<Report> findAll() {
         return reportService.findAll();
     }
 
@@ -33,7 +33,7 @@ public class ReportController {
 
     @PostMapping(value = "")
     @ResponseStatus(HttpStatus.CREATED)
-    public Report add(@RequestBody Report report) {
-        return reportService.add(report);
+    public void add(@RequestBody Report report) {
+        reportService.add(report);
     }
 }

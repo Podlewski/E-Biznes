@@ -5,7 +5,10 @@ import com.hawk.hawkapp.model.User;
 import com.hawk.hawkapp.service.intf.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/user")
@@ -32,13 +35,27 @@ public class UserController {
     }
 
     @PatchMapping(value = "/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public User add(@RequestBody BlockadeDTO blockadeDTO,
-                    @PathVariable("id") Long id) {
-        User user = userService.findById(id);
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateBlockade(@RequestBody BlockadeDTO blockadeDTO,
+                               @PathVariable("id") Long id) {
+        User userById = userService.findById(id);
 
-        user.setIsBlocked(blockadeDTO.getIsBlocked());
+        userById.setIsBlocked(blockadeDTO.getIsBlocked());
 
-        return userService.update(user, id);
+        userService.update(userById, id);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Void> update(@RequestBody User user,
+                                               @PathVariable("id") Long id) {
+        User userById = userService.findById(id);
+
+        if (userById == null) {
+            userService.add(user);
+            return ResponseEntity.created(URI.create(String.format("/user/%d", id))).build();
+        }
+
+        userService.update(user, id);
+        return ResponseEntity.noContent().build();
     }
 }
