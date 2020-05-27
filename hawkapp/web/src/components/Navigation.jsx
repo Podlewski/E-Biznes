@@ -19,7 +19,7 @@ function Navigation(props) {
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-            <li class={`nav-item  ${props.location.pathname === "/home" ? "active" : ""}`}>
+              <li class={`nav-item  ${props.location.pathname === "/home" ? "active" : ""}`}>
                 <Link class="nav-link" to="/home">Home</Link>
               </li>
               <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>

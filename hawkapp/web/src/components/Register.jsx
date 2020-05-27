@@ -1,12 +1,17 @@
 import React, { Component } from "react";
-import "./Register.css";
+import { Link } from "react-router-dom";
+import "./Login.css";
+
+const dateRegex = RegExp(
+  /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
+);
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 );
 
-const dateRegex = RegExp(
-  /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
+const phoneRegex = RegExp(
+  /^(?<!\w)(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}(?!\w)$/
 );
 
 const formValid = formErrors => {
@@ -20,7 +25,7 @@ const formValid = formErrors => {
 }
 
 
-class Register extends Component {
+class Registration extends Component {
   constructor(props) {
     super(props);
 
@@ -29,12 +34,14 @@ class Register extends Component {
       lastName: null,
       email: null,
       birthDate: null,
+      phoneNumber: null,
       password: null,
       formErrors: {
         firstName: "",
         lastName: "",
         email: "",
         birthDate: "",
+        phoneNumber: "",
         password: ""
       }
     };
@@ -69,6 +76,9 @@ class Register extends Component {
       case "birthDate":
         formErrors.birthDate = dateRegex.test(value) ? "" : "Invalid date - date should be in DD/MM/YYYY format";
         break;
+      case "phoneNumber":
+        formErrors.phoneNumber = phoneRegex.test(value) ? "" : "Invalid phone number";
+        break;
       case "password":
         formErrors.password = value.length < 6 ? "Minimum 6 characters required" : "";
         break;
@@ -84,8 +94,9 @@ class Register extends Component {
     const { formErrors } = this.state;
 
     return (
-      <div className="register">
-        <div class="container">
+      <div className="wrapper">
+        <div class="form-wrapper">
+          <h1>Registration</h1>
           <div class="row align-items-center my-5">
             <form onSubmit={this.handleSubmit} noValidate>
                 <div className="firstName">
@@ -108,6 +119,11 @@ class Register extends Component {
                   <input type="text" className={formErrors.birthDate.length > 0 ? "error" : null} placeholder="Birth Date" name="birthDate" noValidate onChange={this.handleChange}/>
                   {formErrors.birthDate.length > 0 && (<span className="errorMessage">{formErrors.birthDate}</span>)}
                 </div>
+                <div className="phoneNumber">
+                  <label htmlFor="phoneNumber">Phone Number</label>
+                  <input type="text" className={formErrors.phoneNumber.length > 0 ? "error" : null} placeholder="Phone number" name="phoneNumber" noValidate onChange={this.handleChange}/>
+                  {formErrors.phoneNumber.length > 0 && (<span className="errorMessage">{formErrors.phoneNumber}</span>)}
+                </div>
                 <div className="password">
                   <label htmlFor="password">Password</label>
                   <input type="password" className={formErrors.password.length > 0 ? "error" : null} placeholder="Password" name="password" noValidate onChange={this.handleChange}/>
@@ -115,7 +131,7 @@ class Register extends Component {
                 </div>
                 <div className="createAccount">
                   <button type="submit">Create Account</button>
-                  <small>Already Have an Account?</small>
+                  <div class="mt-1"><Link to="/login">Already have an account?</Link></div>
                 </div>
             </form>
           </div>
@@ -125,4 +141,4 @@ class Register extends Component {
   }
 }
 
-export default Register;
+export default Registration;

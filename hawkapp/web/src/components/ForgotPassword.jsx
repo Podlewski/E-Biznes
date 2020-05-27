@@ -17,16 +17,14 @@ const formValid = formErrors => {
 }
 
 
-class Login extends Component {
+class Password extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       email: null,
-      password: null,
       formErrors: {
-        email: "",
-        password: ""
+        email: ""
       }
     };
   }
@@ -65,7 +63,7 @@ class Login extends Component {
     return (
       <div className="wrapper">
         <div class="form-wrapper">
-          <h1>Sign in</h1>
+          <h1>Forgot password?</h1>
           <div class="row align-items-center my-5">
             <form onSubmit={this.handleSubmit} noValidate>
                 <div className="email">
@@ -73,14 +71,8 @@ class Login extends Component {
                   <input type="text" className={formErrors.email.length > 0 ? "error" : null} placeholder="Email address" name="email" noValidate onChange={this.handleChange}/>
                   {formErrors.email.length > 0 && (<span className="errorMessage">{formErrors.email}</span>)}
                 </div>
-                <div className="password">
-                  <label htmlFor="password">Password</label>
-                  <input type="password" className={formErrors.password.length > 0 ? "error" : null} placeholder="Password" name="password" noValidate onChange={this.handleChange}/>
-                  {formErrors.password.length > 0 && (<span className="errorMessage">{formErrors.password}</span>)}
-                  <div class="text-right"><Link to="/forgotPassword">Forgot password?</Link></div>
-                </div>
                 <div className="createAccount">
-                  <button type="submit">Sign in</button>
+                  <button type="submit">Send email</button>
                   <div class="mt-1"><Link to="/register">Do not have an account?</Link></div>
                 </div>
             </form>
@@ -91,4 +83,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default Password;
