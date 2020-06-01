@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import Switch from "./Switch";
 
 const dateRegex = RegExp(
   /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/
@@ -30,6 +31,7 @@ class Registration extends Component {
     super(props);
 
     this.state = {
+      isUser: true,
       firstName: null,
       lastName: null,
       email: null,
@@ -51,6 +53,7 @@ class Registration extends Component {
     e.preventDefault();
 
     if (formValid(this.state.formErrors)) {
+      console.log(`${this.state.isUser}`)
       console.log(`SUCCESS: VALID DATA`)
     }
     else {
@@ -86,7 +89,7 @@ class Registration extends Component {
         break;
     }
 
-    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+    // this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
 
 
@@ -99,6 +102,15 @@ class Registration extends Component {
           <h1>Registration</h1>
           <div class="row align-items-center my-5">
             <form onSubmit={this.handleSubmit} noValidate>
+                <div className="userTypeSwitch">
+                  <div class="row">
+                    <div class="col-5 px-0" align="right">User</div>
+                    <div class="col-2" align="center">
+                      <Switch onChange={() => this.setState({ isUser: !this.state.isUser})}/>
+                    </div>
+                    <div class="col-5 px-0" align="left">Animator</div>
+                  </div>
+                </div>
                 <div className="firstName">
                   <label htmlFor="firstName">First Name</label>
                   <input type="text" className={formErrors.firstName.length > 0 ? "error" : null} placeholder="First Name" name="firstName" noValidate onChange={this.handleChange}/>

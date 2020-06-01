@@ -75,6 +75,7 @@ input.error {
   margin-left: 1%;
 }
 
+.userTypeSwitch,
 .firstName,
 .lastName,
 .email,
@@ -93,6 +94,7 @@ input.error {
   width: 49%;
 }
 
+.userTypeSwitch,
 .email,
 .password {
   width: 100%;

@@ -1,8 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { withRouter } from 'react-router-dom';
-import { Navigation, Footer, Home, Login, Register, ForgotPassword } from "./components";
+import { Footer, Home, Login, Register, ForgotPassword } from "./components";
 
 function App() {
   return (
