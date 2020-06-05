@@ -19,14 +19,11 @@ function Navigation(props) {
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class={`nav-item  ${props.location.pathname === "/home" ? "active" : ""}`}>
-                <Link class="nav-link" to="/home">Home</Link>
+              <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+                <Link class="nav-link" to="/register">Register</Link>
               </li>
               <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>
-                <Link class="nav-link" to="/login">Logowanie</Link>
-              </li>
-              <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
-                <Link class="nav-link" to="/register">Rejestracja</Link>
+                <Link class="nav-link" to="/login">Login</Link>
               </li>
             </ul>
           </div>
