@@ -8,7 +8,7 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/home" exact component={() => <Home />} />
+          <Route path="/" exact component={() => <Home />} />
           <Route path="/login" exact component={() => <Login />} />
           <Route path="/register" exact component={() => <Register />} />
           <Route path="/searchObjects" exact component={() => <SearchObjects />} />

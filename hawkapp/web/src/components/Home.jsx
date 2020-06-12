@@ -2,7 +2,7 @@ import React from "react";
 import { Navigation } from "./index.js"
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
-import CookieConsent, { Cookies } from "react-cookie-consent";
+import CookieConsent from "react-cookie-consent";
 
 function Home() {
   return (
