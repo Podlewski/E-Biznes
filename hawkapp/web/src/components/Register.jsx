@@ -142,7 +142,7 @@ class Registration extends Component {
                   {formErrors.password.length > 0 && (<span className="errorMessage">{formErrors.password}</span>)}
                 </div>
                 <div className="createAccount">
-                  <Link to="/searchObjects">
+                  <Link class="wide-button" to="/searchObjects">
                     <button type="submit">Create Account</button>
                   </Link>
                   <div class="mt-1"><Link to="/login">Already have an account?</Link></div>

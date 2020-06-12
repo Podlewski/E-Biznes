@@ -20,7 +20,7 @@ function LoggedNavigation(props) {
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
-                <Link class="nav-link" to="/register">About me</Link>
+                <Link class="nav-link" to="/register">Account information</Link>
               </li>
               <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>
                 <Link class="nav-link" to="/home">Log Out</Link>

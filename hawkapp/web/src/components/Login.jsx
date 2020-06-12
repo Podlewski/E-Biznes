@@ -80,7 +80,7 @@ class Login extends Component {
                   {/* <div class="text-right"><Link to="/forgotPassword">Forgot password?</Link></div> */}
                 </div>
                 <div className="createAccount">
-                <Link to="/searchObjects">
+                <Link class="wide-button" to="/searchObjects">
                   <button type="submit">Sign in</button>
                 </Link>
                 <div class="mt-1"><Link to="/register">Do not have an account?</Link></div>

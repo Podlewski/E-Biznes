@@ -2,6 +2,7 @@ import React from "react";
 import { Navigation } from "./index.js"
 import AwesomeSlider from 'react-awesome-slider';
 import 'react-awesome-slider/dist/styles.css';
+import CookieConsent, { Cookies } from "react-cookie-consent";
 
 function Home() {
   return (
@@ -19,6 +20,7 @@ function Home() {
             <p>I want to see what you got.</p>
           </div>
         </AwesomeSlider>
+        <CookieConsent>This website uses cookies to enhance the user experience.</CookieConsent>
       </div>
     </>
   );
