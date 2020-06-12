@@ -77,11 +77,13 @@ class Login extends Component {
                   <label htmlFor="password">Password</label>
                   <input type="password" className={formErrors.password.length > 0 ? "error" : null} placeholder="Password" name="password" noValidate onChange={this.handleChange}/>
                   {formErrors.password.length > 0 && (<span className="errorMessage">{formErrors.password}</span>)}
-                  <div class="text-right"><Link to="/forgotPassword">Forgot password?</Link></div>
+                  {/* <div class="text-right"><Link to="/forgotPassword">Forgot password?</Link></div> */}
                 </div>
                 <div className="createAccount">
+                <Link to="/searchObjects">
                   <button type="submit">Sign in</button>
-                  <div class="mt-1"><Link to="/register">Do not have an account?</Link></div>
+                </Link>
+                <div class="mt-1"><Link to="/register">Do not have an account?</Link></div>
                 </div>
             </form>
           </div>
