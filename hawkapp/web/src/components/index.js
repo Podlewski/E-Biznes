@@ -6,3 +6,4 @@ export { default as ForgotPassword } from "./ForgotPassword";
 export { default as Register } from "./Register";
 export { default as SearchObjects } from "./SearchObjects";
 export { default as LoggedNavigation } from "./LoggedNavigation";
+export { default as AccountData } from "./AccountData";

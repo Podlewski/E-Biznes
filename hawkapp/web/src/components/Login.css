@@ -10,8 +10,29 @@
   background-color: #98c67d;
 }
 
+.wrapper-2 {
+  min-height: 100vh;
+  max-height: 100%;
+  width: 100%;
+  padding: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .form-wrapper {
   width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px #555;
+  background-color: #ffffff;
+}
+
+.form-wrapper-2 {
+  width: 800px;
   display: flex;
   flex-direction: column;
   padding: 20px 40px;

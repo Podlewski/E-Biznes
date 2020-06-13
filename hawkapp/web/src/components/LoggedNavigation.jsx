@@ -11,7 +11,13 @@ function LoggedNavigation(props) {
           </div>
           <ul class="navbar-nav ml-auto">
             <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
-              <Link class="nav-link" to="/register">Account information</Link>
+              <Link class="nav-link" to="/SearchObjects">Search</Link>
+            </li>
+            <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+              <Link class="nav-link" to="/login">Reservations</Link>
+            </li>
+            <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+              <Link class="nav-link" to="/accountData">Account data</Link>
             </li>
             <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>
               <Link class="nav-link" to="/">Log Out</Link>
