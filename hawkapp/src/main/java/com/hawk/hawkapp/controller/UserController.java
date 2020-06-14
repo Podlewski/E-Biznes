@@ -6,16 +6,23 @@ import com.hawk.hawkapp.service.intf.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
 @RestController
+@CrossOrigin(maxAge = 3600)
 @RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    PasswordEncoder encoder;
+
 
     @GetMapping(value = "/{id}")
     User findById(@PathVariable("id") Long id) {
@@ -26,12 +33,6 @@ public class UserController {
     @ResponseStatus(HttpStatus.OK)
     public void delete(@PathVariable("id") Long id) {
         userService.delete(id);
-    }
-
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public User add(@RequestBody User user) {
-        return userService.add(user);
     }
 
     @PatchMapping(value = "/{id}")
@@ -52,9 +53,11 @@ public class UserController {
 
         if (userById == null) {
             userService.add(user);
+            user.setPassword(encoder.encode(user.getPassword()));
             return ResponseEntity.created(URI.create(String.format("/user/%d", id))).build();
         }
 
+        user.setPassword(encoder.encode(user.getPassword()));
         userService.update(user, id);
         return ResponseEntity.noContent().build();
     }
