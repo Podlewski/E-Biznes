@@ -1,7 +1,9 @@
 package com.hawk.hawkapp.controller;
 
 import com.hawk.hawkapp.model.User;
+import com.hawk.hawkapp.model.UserRole;
 import com.hawk.hawkapp.payload.request.LoginRequest;
+import com.hawk.hawkapp.payload.request.SignUpRequest;
 import com.hawk.hawkapp.payload.response.JwtResponse;
 import com.hawk.hawkapp.payload.response.MessageResponse;
 import com.hawk.hawkapp.repository.UserRepository;
@@ -14,15 +16,13 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -59,7 +59,28 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody User signUpRequest) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
+        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+        }
+
+        User user = new User();
+        user.setEmail(signUpRequest.getEmail());
+        user.setPassword(encoder.encode(signUpRequest.getPassword()));
+        user.setBirthDate(signUpRequest.getBirthDate());
+        user.setRole(signUpRequest.isUser() ? UserRole.USER : UserRole.ANIMATOR);
+        user.setFirstName(signUpRequest.getFirstName());
+        user.setLastName(signUpRequest.getLastName());
+        user.setPhone(signUpRequest.getPhone());
+        userRepository.save(user);
+
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
+    @PostMapping("/signup/plain")
+    public ResponseEntity<?> registerPlainUser(@Valid @RequestBody User signUpRequest) {
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {
             return ResponseEntity
                     .badRequest()
