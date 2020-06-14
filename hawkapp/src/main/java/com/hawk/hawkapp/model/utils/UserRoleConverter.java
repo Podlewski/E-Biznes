@@ -1,4 +1,6 @@
-package com.hawk.hawkapp.model;
+package com.hawk.hawkapp.model.utils;
+
+import com.hawk.hawkapp.model.UserRole;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

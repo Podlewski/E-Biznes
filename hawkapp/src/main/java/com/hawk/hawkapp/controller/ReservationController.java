@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/reservation")
 public class ReservationController {
@@ -20,7 +22,7 @@ public class ReservationController {
         return reservationService.findById(id);
     }
 
-    @PostMapping(value = "")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation add(@RequestBody Reservation reservation) {
         return reservationService.add(reservation);
@@ -35,5 +37,10 @@ public class ReservationController {
         reservation.setStatus(ReservationStatusDTOConverter.convertToReservationStatus(statusDTO));
 
         reservationService.update(reservation, id);
+    }
+
+    @GetMapping(value = "/filter")
+    List<Reservation> filter(@RequestParam(value = "search") String query) {
+        return reservationService.filter(query);
     }
 }

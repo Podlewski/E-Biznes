@@ -15,14 +15,14 @@ public class ReportController {
     @Autowired
     private ReportService reportService;
 
+    @GetMapping
+    List<Report> findAll() {
+        return reportService.findAll();
+    }
+
     @GetMapping(value = "/{id}")
     Report findById(@PathVariable("id") Long id) {
         return reportService.findById(id);
-    }
-
-    @GetMapping(value = "")
-    List<Report> findAll() {
-        return reportService.findAll();
     }
 
     @DeleteMapping(value = "/{id}")
@@ -31,7 +31,7 @@ public class ReportController {
         reportService.delete(id);
     }
 
-    @PostMapping(value = "")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void add(@RequestBody Report report) {
         reportService.add(report);
