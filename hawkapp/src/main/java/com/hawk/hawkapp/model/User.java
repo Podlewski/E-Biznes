@@ -7,6 +7,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -14,13 +16,17 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
+@Table(	name = "user",
+        uniqueConstraints = {
+                @UniqueConstraint(columnNames = "email")
+        })
 public class User extends BaseEntity {
 
     @Column
     private String email;
 
     @Column
-    private String passwordHash;
+    private String password;
 
     @Column
     @Convert(converter = UserRoleConverter.class)
