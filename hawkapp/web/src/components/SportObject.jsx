@@ -49,7 +49,7 @@ class SportObject extends Component {
   componentDidMount() {
     // load event data
     this.setState({
-      startDate: "2020-06-01",
+      startDate: "2020-06-15",
       events: [
         {
           id: 1,
@@ -75,8 +75,7 @@ class SportObject extends Component {
         <LoggedNavigation />
         <div className="wrapper-2">
           <div class="object-wrapper">
-
-            <div class="row">
+            <div class="row pb-5">
               <div class="col-sm">
                 <div class="block">
                   <h5>Object Name</h5>
@@ -90,6 +89,11 @@ class SportObject extends Component {
                   <h5>Address</h5>
                   <h4>???</h4>
                 </div>
+                <div class="block">
+                  <h5>Animator</h5>
+                  <h4>???</h4>
+                  <small>Report animator</small>
+                </div>
               </div>
               <div class="col-sm">
                 Graphics?
@@ -101,6 +105,7 @@ class SportObject extends Component {
                   selectMode={"week"}
                   showMonths={3}
                   skipMonths={3}
+                  weekStarts={1}
                   onTimeRangeSelected={ args => {
                     this.setState({
                       startDate: args.day
@@ -110,6 +115,16 @@ class SportObject extends Component {
               </div>
               <div style={styles.main}>
                 <DayPilotCalendar
+                  timeFormat={"Clock24Hours"}
+                  cellDuration={30}
+                  cellHeight={22}
+                  weekStarts={1}
+                  businessBeginsHour={7}
+                  businessEndsHour={23}
+                  dayBeginsHour={7}
+                  dayEndsHour={23}
+                  eventMoveHandling={"Disabled"}
+                  headerDateFormat={"dd.MM.yyyy"}
                   {...config}
                   ref={component => {
                     this.calendar = component && component.control;
