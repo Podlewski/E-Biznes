@@ -1,14 +1,17 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Footer, Home, Login, Register, SearchObjects, AccountData, SportObject } from "./components";
+import { Footer, Home, Login, Register, SearchObjects, AccountData, SportObject, Navigation } from "./components";
 import "./components/Login.css"
 
 function App() {
   const NoMatch = () => (
-    <div className="wrapper">
-      <h3>404 - page not found :C</h3>
-    </div>
+    <>
+      <Navigation/>
+      <div className="wrapper">
+        <h3>404 - page not found :C</h3>
+      </div>
+    </>
   )
 
   return (

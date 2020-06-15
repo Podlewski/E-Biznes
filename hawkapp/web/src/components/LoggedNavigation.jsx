@@ -7,7 +7,7 @@ function LoggedNavigation(props) {
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <div>
-            <Link class="navbar-brand" to="/"><img src={"./logo192.png"} alt="Jastrzębik logo" style={{height:40, marginTop: -7, marginRight: 10}} />Jastrzębik</Link>
+            <Link class="navbar-brand" to="/SearchObjects"><img src={"./logo192.png"} alt="Jastrzębik logo" style={{height:40, marginTop: -7, marginRight: 10}} />Jastrzębik</Link>
           </div>
           <ul class="navbar-nav ml-auto">
             <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
