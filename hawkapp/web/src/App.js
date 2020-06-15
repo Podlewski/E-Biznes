@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Footer, Home, Login, Register, SearchObjects, AccountData } from "./components";
+import { Footer, Home, Login, Register, SearchObjects, AccountData, SportObject } from "./components";
 import "./components/Login.css"
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
           <Route path="/register" exact component={() => <Register />} />
           <Route path="/searchObjects" exact component={() => <SearchObjects />} />
           <Route path="/accountData" exact component={() => <AccountData />} />
+          <Route path="/sportObject" exact component={() => <SportObject />} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />
