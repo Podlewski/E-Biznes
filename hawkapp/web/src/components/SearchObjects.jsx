@@ -3,13 +3,16 @@ import { withRouter } from "react-router-dom";
 import { LoggedNavigation } from "./index.js";
 import SingleSearchObject from './SingleSearchObject'
 
-
+const categories = (facilityCategories, setCategory) => {
+  
+}
 
 class SearchObjects extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      search: "",
       facilities: [],
     };
 
@@ -44,17 +47,25 @@ class SearchObjects extends Component {
   createGridPanel() {
     let elements = []
     {
-      this.state.facilities.map(facility => (
+      this.state.facilities.filter(facility =>
+        facility.name.includes(this.state.search)
+      ).map(facility => (
         elements.push(<SingleSearchObject facility={facility} />)
       ))
     }
     return elements
   }
 
+  search = (event) => {
+    let keyword = event.target.value;
+    this.setState({search: keyword});
+  }
+
   render() {
     return (
       <>
         <LoggedNavigation />
+        <input type="text" placeholder="Search" onChange={e => this.search(e)} />
         <div className="searchObjects">
           {this.createGridPanel()}
         </div>

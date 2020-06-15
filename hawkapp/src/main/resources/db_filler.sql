@@ -8,7 +8,8 @@ INSERT INTO Sport VALUES -- ID, ADDRESS, ANIMATOR_ID, BOOKING_DATE, CITY, NAME, 
     (1, 'basketball');
 
 INSERT INTO Facility VALUES -- ID, ADDRESS, ANIMATOR_ID, BOOKING_DATE, CITY, NAME, NUMBER_OF_SUBFACILITIES, PAUSE_DATE, PHONE, POSTCODE, SPORT_ID
-    (0, 'address', 0, '2100-08-02 01:00:00', 'city', 'name', 1, '2100-08-02 01:00:00', 'phone', 'postcode', 0);
+    (0, 'address', 0, '2100-08-02 01:00:00', 'city', 'name', 1, '2100-08-02 01:00:00', 'phone', 'postcode', 0),
+    (1, 'baldman st 69', 1, '2100-08-02 01:00:00', 'Los Ageless', 'Pump Castle', 1, '2100-08-02 01:00:00', '4201337', '90210', 1);
 
 INSERT INTO Reservation (id, facility_id, user_id, creation_Date, status, reservation_Date) VALUES
     (0,0,0,'2020-08-02 01:00:00', 'PAYED', '2020-06-02 01:00:00'),
