@@ -48,6 +48,9 @@ function animatorNavigation(props) {
     <Link class="nav-link" to="/SearchObjects">Search</Link>
   </li>
   <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+    <Link class="nav-link" to="/myObjects">My Facilities</Link>
+  </li>
+  <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
     <Link class="nav-link" to="/accountData">Account data</Link>
   </li>
   <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Footer, Home, Login, Register, SearchObjects, AccountData,
+import { Footer, Home, Login, Register, SearchObjects, MyObjects, AccountData,
          SportObject, Navigation, CreateSportObject, Logout } from "./components";
 import "./components/Login.css"
 
@@ -24,6 +24,7 @@ function App() {
           <Route path="/logout" exact component={() => <Logout/>} />
           <Route path="/register" exact component={() => <Register/>} />
           <Route path="/searchObjects" exact component={() => <SearchObjects/>} />
+          <Route path="/myObjects" exact component={() => <MyObjects/>} />
           <Route path="/accountData" exact component={() => <AccountData/>} />
           <Route path="/sportObject/:id" exact component={props => <SportObject {...props} />} />
           <Route path="/newObject" exact component={() => <CreateSportObject/>} />

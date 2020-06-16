@@ -44,7 +44,9 @@ function SingleSearchObject({ facility }) {
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">
-                  <Link to="SportObject">{facility.name}</Link>
+                  <Link to={{pathname: `sportObject/${facility.id}`}}>
+                    {facility.name}
+                  </Link>
                 </Typography>
                 <Typography variant="body2" gutterBottom>
                   {facility.city}
