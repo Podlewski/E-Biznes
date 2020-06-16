@@ -87,12 +87,14 @@ input.error {
 }
 
 .firstName,
-.birthDate {
+.birthDate,
+.leftField {
   margin-right: 1%;
 }
 
 .lastName,
-.phoneNumber {
+.phoneNumber,
+.rightField {
   margin-left: 1%;
 }
 
@@ -102,7 +104,11 @@ input.error {
 .email,
 .birthDate,
 .phoneNumber,
-.password {
+.password,
+.objectName,
+.fullField,
+.leftField,
+.rightField {
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
@@ -111,13 +117,16 @@ input.error {
 .firstName,
 .lastName,
 .birthDate,
-.phoneNumber {
+.phoneNumber,
+.leftField,
+.rightField {
   width: 49%;
 }
 
 .userTypeSwitch,
 .email,
-.password {
+.password,
+.fullField {
   width: 100%;
 }
 

@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Footer, Home, Login, Register, SearchObjects, AccountData, SportObject, Navigation } from "./components";
+import { Footer, Home, Login, Register, SearchObjects, AccountData,
+         SportObject, Navigation, CreateSportObject } from "./components";
 import "./components/Login.css"
 
 function App() {
@@ -18,12 +19,13 @@ function App() {
     <div className="App">
       <Router>
         <Switch>
-          <Route path="/" exact component={() => <Home />} />
-          <Route path="/login" exact component={() => <Login />} />
-          <Route path="/register" exact component={() => <Register />} />
-          <Route path="/searchObjects" exact component={() => <SearchObjects />} />
-          <Route path="/accountData" exact component={() => <AccountData />} />
-          <Route path="/sportObject" exact component={() => <SportObject />} />
+          <Route path="/" exact component={() => <Home/>} />
+          <Route path="/login" exact component={() => <Login/>} />
+          <Route path="/register" exact component={() => <Register/>} />
+          <Route path="/searchObjects" exact component={() => <SearchObjects/>} />
+          <Route path="/accountData" exact component={() => <AccountData/>} />
+          <Route path="/sportObject" exact component={() => <SportObject/>} />
+          <Route path="/newObject" exact component={() => <CreateSportObject/>} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />
