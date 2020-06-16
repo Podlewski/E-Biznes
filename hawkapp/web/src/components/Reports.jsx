@@ -4,7 +4,7 @@ import { LoggedNavigation } from "./index.js";
 import SingleSearchObject from './SingleSearchObject'
 import "./Style.css"
 
-class SearchObjects extends Component {
+class Reports extends Component {
   constructor(props) {
     super(props);
 
@@ -82,14 +82,10 @@ class SearchObjects extends Component {
       <>
         <LoggedNavigation />
         <div className="defaultWrapper">
-          <div className="row text-center">
+          <div className="row text-center pb-3">
             <input type="text" className="wideSearch" placeholder="Search" onChange={e => this.search(e)} />
           </div>
-          <div className="row py-4">
-            <h6 className="my-auto mr-3">City filters:</h6>
-            {this.createCategories()}
-          </div>
-          <div className="searchObjects">
+          <div className="searchReports">
             <h4 className="text-center">Results:</h4>
             {this.createGridPanel()}
           </div>
@@ -99,4 +95,4 @@ class SearchObjects extends Component {
   }
 }
 
-export default withRouter(SearchObjects);
+export default withRouter(Reports);
