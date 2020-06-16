@@ -1,22 +1,28 @@
 import React from "react";
+import "./Style.css";
 
 function Footer() {
   return (
-    <div className="footer">
-      <footer class="py-3 bg-dark ">
-        <div class="row">
-          <div class="col-6 ml-auto mb-5 mb-lg-0 text-center">
-              <a class="text-white small">Jastrzębik sp. z o.o.</a><br/>
-              <a class="text-white-50 small">Adres firmy linia 1</a><br/>
-              <a class="text-white-50 small">Adres firmy linia 2</a><br/>
+    <div className="footer p-0">
+      <footer class="py-3 bg-dark">
+        <div class="row text-center flex mx-0 pt-3">
+          <div class="col px-1">
+              <p class="mb-2 text-white small">Jastrzębik sp. z o.o.</p>
+              <p class="mb-2 text-white-50 small">ul. Adresowa 20</p>
+              <p class="mb-2 text-white-50 small">91-000 Łódź</p>
           </div>
-          <div class="col-6 ml-auto mb-5 mb-lg-0 text-center">
-              <a class="text-white small">Kontakt</a><br/>
-              <a class="text-white-50 small" href="mailto:adres@e.mail">adres@e.mail</a><br/>
-              <a class="text-white-50 small" href="tel:+48-123-456-789">+48 123 456 789</a><br/>
+          <div class="col px-1">
+              <p class="mb-2 text-white small">Kontakt</p>
+              <p class="mb-2 text-white-50 small">Mail: <a class="gh m-2" href="mailto:adres@e.mail">adres@e.mail</a></p>
+              <p class="mb-2 text-white-50 small">Telefon: <a class="gh m-2" href="tel:+48-123-456-789">+48 123 456 789</a></p>
+          </div>
+          <div class="col px-1">
+              <p class="mb-2 text-white-50 small">NIP:   0123456789</p>
+              <p class="mb-2 text-white-50 small">REGON: 123456789</p>
+              <p class="mb-2 text-white-50 small">KRS:   0123456789</p>
           </div>
         </div>
-        <div class="container pt-3">
+        <div class="container pt-5">
           <p class="m-0 text-center text-white small">
             Copyright &copy; Zbigniew Nowacki, Karol Podlewski, Patrycja Szczakowska 2020
           </p>

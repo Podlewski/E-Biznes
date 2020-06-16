@@ -71,7 +71,7 @@ function LoggedNavigation(props) {
     <div className="navigation">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <div>
+          <div class="h-75">
             <Link class="navbar-brand" to="/SearchObjects"><img src={"./logo192.png"} alt="Jastrzębik logo" style={{ height: 40, marginTop: -7, marginRight: 10 }} />Jastrzębik</Link>
           </div>
           {content}

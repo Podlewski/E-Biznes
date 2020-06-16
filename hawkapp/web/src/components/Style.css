@@ -1,0 +1,14 @@
+.wrapper {
+  min-height: 100vh;
+  max-height: 100%;
+  width: 100%;
+  padding: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gh:hover {
+  color: #98c67d;
+}
