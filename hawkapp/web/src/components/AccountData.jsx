@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./Login.css";
 import { LoggedNavigation } from "./index.js"
+// import checkIfLoggedIn from "./LoginChekker";
 
 
 const emailRegex = RegExp(
@@ -26,7 +27,6 @@ const formValid = formErrors => {
 class AccountData extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       readOnly: true,
       formErrors: {
@@ -37,7 +37,16 @@ class AccountData extends Component {
       }
     };
 
+    // this.checkIfLoggedIn(props);
     this.fillData();
+  }
+
+   checkIfLoggedIn(props){ 
+    if(!localStorage.getItem('login'))
+    {
+      console.log(localStorage.getItem('login'))
+      props.history.push('/');
+    }
   }
 
   fillData() {

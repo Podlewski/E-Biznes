@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Footer, Home, Login, Register, SearchObjects, AccountData,
-         SportObject, Navigation, CreateSportObject } from "./components";
+         SportObject, Navigation, CreateSportObject, Logout } from "./components";
 import "./components/Login.css"
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={() => <Home/>} />
           <Route path="/login" exact component={() => <Login/>} />
+          <Route path="/logout" exact component={() => <Logout/>} />
           <Route path="/register" exact component={() => <Register/>} />
           <Route path="/searchObjects" exact component={() => <SearchObjects/>} />
           <Route path="/accountData" exact component={() => <AccountData/>} />
