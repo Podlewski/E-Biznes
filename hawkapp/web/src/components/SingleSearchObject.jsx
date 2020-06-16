@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -43,7 +44,7 @@ function SingleSearchObject({ facility }) {
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">
-                  {facility.name}
+                  <Link to="SportObject">{facility.name}</Link>
                 </Typography>
                 <Typography variant="body2" gutterBottom>
                   {facility.city}
@@ -73,4 +74,3 @@ function SingleSearchObject({ facility }) {
 }
 
 export default SingleSearchObject;
-

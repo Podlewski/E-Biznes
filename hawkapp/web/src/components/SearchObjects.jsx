@@ -3,25 +3,34 @@ import { withRouter } from "react-router-dom";
 import { LoggedNavigation } from "./index.js";
 import SingleSearchObject from './SingleSearchObject'
 
-const categories = (facilityCategories, setCategory) => {
-  
-}
-
 class SearchObjects extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       search: "",
+      displayCategory: "all",
+      categories: [],
       facilities: [],
     };
 
     this.fillData();
   }
 
+  createCategories() {
+    return this.state.categories.map(category => (
+      <button className="btn-category" key={category} onClick={() => this.setCategory(category)}>
+        {category}
+      </button>
+    ))
+  }
 
   componentDidMount() {
     this.fillData('http://localhost:8080/facility');
+  }
+
+  setCategory(category) {
+    this.setState({displayCategory: category});
   }
 
   fillData(url) {
@@ -36,6 +45,10 @@ class SearchObjects extends Component {
               facilities: result
             })
             console.log("state", this.state.facilities);
+
+            this.setState({
+              categories: ["all", ...new Set(result.map(x => x.city))]
+            })
           })
         }
         else {
@@ -48,7 +61,9 @@ class SearchObjects extends Component {
     let elements = []
     {
       this.state.facilities.filter(facility =>
-        facility.name.includes(this.state.search)
+        facility.city === this.state.displayCategory || this.state.displayCategory === "all"
+      ).filter(facility =>
+        facility.name.toUpperCase().includes(this.state.search.toUpperCase())
       ).map(facility => (
         elements.push(<SingleSearchObject facility={facility} />)
       ))
@@ -66,6 +81,8 @@ class SearchObjects extends Component {
       <>
         <LoggedNavigation />
         <input type="text" placeholder="Search" onChange={e => this.search(e)} />
+        <h3>City</h3>
+        {this.createCategories()}
         <div className="searchObjects">
           {this.createGridPanel()}
         </div>
