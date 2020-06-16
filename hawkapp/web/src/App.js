@@ -24,7 +24,7 @@ function App() {
           <Route path="/register" exact component={() => <Register/>} />
           <Route path="/searchObjects" exact component={() => <SearchObjects/>} />
           <Route path="/accountData" exact component={() => <AccountData/>} />
-          <Route path="/sportObject" exact component={() => <SportObject/>} />
+          <Route path="/sportObject/:id" exact component={props => <SportObject {...props} />} />
           <Route path="/newObject" exact component={() => <CreateSportObject/>} />
           <Route component={NoMatch} />
         </Switch>

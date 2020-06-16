@@ -20,7 +20,7 @@ import java.sql.Timestamp;
 @Entity
 public class Reservation extends BaseEntity {
 
-    @JsonIgnore
+//    @JsonIgnore
     @Column(name = "facility_id")
     private Long facilityId;
 
@@ -47,6 +47,10 @@ public class Reservation extends BaseEntity {
     private ReservationStatus status;
 
     @Column
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "Europe/Berlin")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Europe/Berlin")
     private Timestamp reservationDate;
+
+    @Column
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Europe/Berlin")
+    private Timestamp endDate;
 }

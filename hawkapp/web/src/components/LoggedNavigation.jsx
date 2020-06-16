@@ -1,6 +1,14 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
+function logout(){
+  localStorage.setItem('login', JSON.stringify({
+    login: false,
+    token: null,
+  }))
+  localStorage.setItem('userId', null)
+}
+
 function LoggedNavigation(props) {
   return (
     <div className="navigation">
@@ -20,7 +28,10 @@ function LoggedNavigation(props) {
               <Link class="nav-link" to="/accountData">Account data</Link>
             </li>
             <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>
-              <Link class="nav-link" to="/">Log Out</Link>
+              <Link class="nav-link" to="/">
+              {/* <span onClick={this.logout()}>More</span> */}
+                Log Out
+              </Link>
             </li>
           </ul>
         </div>

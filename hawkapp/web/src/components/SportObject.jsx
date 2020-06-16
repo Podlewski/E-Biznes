@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import {DayPilot, DayPilotCalendar, DayPilotNavigator} from "daypilot-pro-react";
+import { DayPilot, DayPilotCalendar, DayPilotNavigator } from "daypilot-pro-react";
+import { withRouter } from "react-router-dom";
 import { LoggedNavigation } from "./index.js"
 import "./SportObject.css";
 import "./Login.css";
@@ -14,62 +15,118 @@ const styles = {
 };
 
 class SportObject extends Component {
-
   constructor(props) {
     super(props);
+
     this.state = {
       viewType: "Week",
       durationBarVisible: true,
       timeRangeSelectedHandling: "Enabled",
-      onTimeRangeSelected: args => {
-        let dp = this.calendar;
-        DayPilot.Modal.prompt("Create a new event:", "Event 1").then(function(modal) {
-          dp.clearSelection();
-          if (!modal.result) { return; }
-          dp.events.add(new DayPilot.Event({
-            start: args.start,
-            end: args.end,
-            id: DayPilot.guid(),
-            text: modal.result
-          }));
-        });
-      },
-      eventDeleteHandling: "Update",
-      onEventClick: args => {
-        let dp = this.calendar;
-        DayPilot.Modal.prompt("Update event text:", args.e.text()).then(function(modal) {
-          if (!modal.result) { return; }
-          args.e.data.text = modal.result;
-          dp.events.update(args.e);
-        });
-      },
     };
   }
 
   componentDidMount() {
-    // load event data
+    this.fillData();
+    this.addReservationCreator();
+  }
+
+  fillData() {
+
+    fetch('http://localhost:8080/facility/' + this.props.match.params.id,
+      {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' },
+      }).then((response) => {
+        if (response.ok) {
+          response.json().then((result) => {
+            this.setState({
+              name: result.name,
+              address: result.address,
+              sport: result.sport.name,
+              phoneNumber: result.phoneNumber,
+              reservations: result.reservations
+            })
+            this.fillEvents(this.state.reservations);
+          })
+        }
+        else {
+          this.props.history.push('/searchObjects');
+        }
+      })
+  }
+
+  fillEvents(reservations) {
+    const events = []
+    reservations.map((reservation) => {
+      events.push({
+        id: reservation.id,
+        text: "Reservation " + reservation.id,
+        start: reservation.reservationDate,
+        end: reservation.endDate
+      })
+    })
     this.setState({
       startDate: "2020-06-15",
-      events: [
-        {
-          id: 1,
-          text: "Event 1",
-          start: "2020-06-16T10:30:00",
-          end: "2020-06-16T13:00:00"
-        },
-        {
-          id: 2,
-          text: "Event 2",
-          start: "2020-06-17T12:00:00",
-          end: "2020-06-17T14:00:00",
-          backColor: "#38761d"
-        }
-      ]
-    });
+      events: events
+    }
+    )
+  }
+
+  addReservationCreator() {
+    const id = this.props.match.params.id;
+
+    this.setState({
+      error: false,
+      onTimeRangeSelected: args => {
+        let dp = this.calendar;
+        DayPilot.Modal.prompt("Create a new reservation:").then(function (modal) {
+          dp.clearSelection();
+          if (!modal.result) { return; }
+
+          var reservation = {
+            facilityId: id,
+            userId: localStorage.getItem("userId"),
+            reservationDate: args.start,
+            endDate: args.end
+          }
+
+          fetch('http://localhost:8080/reservation',
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(reservation)
+            }).then((response) => {
+              if (response.ok) {
+                console.log(response)
+                dp.events.add(new DayPilot.Event({
+                  start: args.start,
+                  end: args.end,
+                  id: DayPilot.guid(),
+                  text: modal.result
+                }));
+              }             
+            })
+        });
+      },
+    })
   }
 
   render() {
-    var {...config} = this.state;
+    var { ...config } = this.state;
+
+    // if (localStorage.getItem('reservationError')==='true') {
+    //   errorMsg =
+    //     <article class="message is-danger">
+    //       <div class="message-header">
+    //         <p>Cannot create reservation</p>
+    //         <button class="delete" aria-label="delete"></button>
+    //       </div>
+    //       <div class="message-body">
+    //         <strong>{this.state.errorMsg}</strong>
+    //       </div>
+    //     </article>
+    // }
+
     return (
       <>
         <LoggedNavigation />
@@ -79,26 +136,26 @@ class SportObject extends Component {
               <div class="col-sm">
                 <div class="block">
                   <h5>Object Name</h5>
-                  <h4>???</h4>
+                  <h4>{this.state.name}</h4>
                 </div>
                 <div class="block">
                   <h5>Sport type</h5>
-                  <h4>???</h4>
+                  <h4>{this.state.sport}</h4>
                 </div>
                 <div class="block">
                   <h5>Address</h5>
-                  <h4>???</h4>
+                  <h4>{this.state.address}</h4>
                 </div>
                 <div class="block">
-                  <h5>Animator</h5>
-                  <h4>???</h4>
-                  <small>Report animator</small>
+                  <h5>Phone number</h5>
+                  <h4>{this.state.phoneNumber}</h4>
                 </div>
               </div>
               <div class="col-sm">
                 Graphics?
               </div>
             </div>
+            {/* {errorMsg} */}
             <div>
               <div style={styles.left}>
                 <DayPilotNavigator
@@ -106,12 +163,12 @@ class SportObject extends Component {
                   showMonths={3}
                   skipMonths={3}
                   weekStarts={1}
-                  onTimeRangeSelected={ args => {
+                  onTimeRangeSelected={args => {
                     this.setState({
                       startDate: args.day
                     });
                   }}
-                  />
+                />
               </div>
               <div style={styles.main}>
                 <DayPilotCalendar
@@ -129,7 +186,7 @@ class SportObject extends Component {
                   ref={component => {
                     this.calendar = component && component.control;
                   }}
-                  />
+                />
               </div>
             </div>
           </div>
@@ -139,4 +196,4 @@ class SportObject extends Component {
   }
 }
 
-export default SportObject;
+export default withRouter(SportObject);

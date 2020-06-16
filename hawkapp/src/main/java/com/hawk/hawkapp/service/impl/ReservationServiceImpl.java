@@ -22,6 +22,9 @@ public class ReservationServiceImpl extends BaseServiceImpl<ReservationRepositor
     private final EntityManager entityManager;
 
     @Autowired
+    private UserServiceImpl userService;
+
+    @Autowired
     public ReservationServiceImpl(ReservationRepository reservationRepository,
                                   EntityManager entityManager) {
         super(reservationRepository);
@@ -30,7 +33,7 @@ public class ReservationServiceImpl extends BaseServiceImpl<ReservationRepositor
 
     @Override
     public Reservation add(Reservation reservation) {
-        if (reservation.getUser().getIsBlocked()) {
+        if (userService.findById(reservation.getUserId()).getIsBlocked()) {
             throw new InvalidParameterException();
         }
 

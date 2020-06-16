@@ -12,6 +12,7 @@ INSERT INTO Facility VALUES -- ID, ADDRESS, ANIMATOR_ID, BOOKING_DATE, CITY, NAM
     (1, 'baldman st 69', 1, '2100-08-02 01:00:00', 'Los Ageless', 'Pump Castle', 1, '2100-08-02 01:00:00', '4201337', '90210', 1),
     (2, 'baldman st 69', 1, '2100-08-02 01:00:00', 'Los Ageless', 'Pump Castle', 1, '2100-08-02 01:00:00', '4201337', '90210', 1);
 
-INSERT INTO Reservation (id, facility_id, user_id, creation_Date, status, reservation_Date) VALUES
-    (0,0,0,'2020-08-02 01:00:00', 'PAYED', '2020-06-02 01:00:00'),
-    (1,0,1,'2020-08-02 01:00:00', 'PAYED', '2020-05-02 01:00:00');
+
+INSERT INTO Reservation (id, facility_id, user_id, creation_Date, status, reservation_Date, end_date) VALUES
+    (0,0,0,'2020-08-02 01:00:00', 'PAYED', '2020-06-02 12:00:00', '2020-06-02 13:00:00'),
+    (1,0,1,'2020-08-02 01:00:00', 'PAYED', '2020-06-02 15:00:00', '2020-06-02 16:00:00');
