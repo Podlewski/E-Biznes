@@ -6,7 +6,7 @@ function Navigation(props) {
     <div className="navigation">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <div class="h-75">
+          <div>
             <Link class="navbar-brand" to="/"><img src={"./logo192.png"} alt="Jastrzębik logo" style={{height:40, marginTop: -7, marginRight: 10}} />Jastrzębik</Link>
           </div>
           <ul class="navbar-nav ml-auto">
