@@ -1,0 +1,48 @@
+.defaultWrapper {
+  min-height: 100vh;
+  max-height: 100%;
+  width: 100%;
+  padding: 50px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: center;
+}
+
+.gh:hover {
+  color: #98c67d;
+}
+
+.wideSearch {
+  width: 584px;
+}
+
+.superWideSearch {
+  width: 750px;
+}
+
+.searchableObjects > div {
+  width: 1000px;
+  margin-bottom: 16px;
+}
+
+.butt {
+  background-color: #98c67d;
+  color: #fff;
+  border: 2px solid #fff;
+  font-size: 1em;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  border: 2px solid #98c67d;
+}
+
+.butt-h {
+  width: 150px;
+  height: 100%;
+}
+
+.butt:hover {
+  color: #98c67d;
+  background-color: #fff;
+  border: 2px solid #98c67d;
+}
