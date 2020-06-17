@@ -9,8 +9,6 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -18,7 +16,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(	name = "user",
+@Table(name = "user",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = "email")
         })
@@ -45,7 +43,7 @@ public class User extends BaseEntity {
     private Timestamp birthDate;
 
     @Column
-    private String phone ="600789345";
+    private String phone = "600789345";
 
     @Column
     private Boolean isBlocked = Boolean.FALSE;

@@ -20,7 +20,7 @@ import java.sql.Timestamp;
 @Entity
 public class Reservation extends BaseEntity {
 
-//    @JsonIgnore
+    //    @JsonIgnore
     @Column(name = "facility_id")
     private Long facilityId;
 

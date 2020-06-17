@@ -8,9 +8,9 @@ import javax.validation.constraints.NotBlank;
 @Getter
 @Setter
 public class LoginRequest {
-	@NotBlank
-	private String email;
+    @NotBlank
+    private String email;
 
-	@NotBlank
-	private String password;
+    @NotBlank
+    private String password;
 }

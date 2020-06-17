@@ -1,5 +1,5 @@
 import React from "react";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -29,13 +29,12 @@ const useStyles = makeStyles((theme) => ({
 
 
 function pictogram(sport) {
-    
+
   const picStyle = { height: 125 };
 
-  switch(sport)
-  {
+  switch (sport) {
     case "baseball":
-      return <img src={"/pic/baseball.jpg"} alt="Baseball pictogram" style={picStyle} />     
+      return <img src={"/pic/baseball.jpg"} alt="Baseball pictogram" style={picStyle} />
     case "basketball":
       return <img src={"/pic/basketball.jpg"} alt="Basketball pictogram" style={picStyle} />
     case "dance":
@@ -49,9 +48,24 @@ function pictogram(sport) {
   }
 }
 
-function SingleSearchObject({ facility }) {
+function SingleSearchObject({ facility, view }) {
 
   const classes = useStyles();
+
+  var goto
+  if (view) {
+    goto = (
+      <Link to={{ pathname: `sportObject/${facility.id}` }}>
+        {facility.name}
+      </Link>
+    )
+  } else {
+    goto = (
+      <Link to={{ pathname: `editObject/${facility.id}` }}>
+        {facility.name}
+      </Link>
+    )
+  }
 
   return (
     <div className={classes.root}>
@@ -66,9 +80,7 @@ function SingleSearchObject({ facility }) {
             <Grid item xs container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="subtitle1">
-                  <Link to={{pathname: `sportObject/${facility.id}`}}>
-                    {facility.name}
-                  </Link>
+                  {goto}
                 </Typography>
                 <Typography variant="body2" gutterBottom>
                   {facility.city}
@@ -80,14 +92,9 @@ function SingleSearchObject({ facility }) {
                   {facility.phone}
                 </Typography>
               </Grid>
-              {/* <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                  Remove
-                </Typography>
-              </Grid> */}
             </Grid>
             <Grid item>
-            <Typography variant="subtitle1">{facility.price} PLN/H</Typography>
+              <Typography variant="subtitle1">{facility.price} PLN/H</Typography>
             </Grid>
           </Grid>
         </Grid>

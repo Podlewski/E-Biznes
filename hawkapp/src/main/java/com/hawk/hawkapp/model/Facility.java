@@ -40,7 +40,7 @@ public class Facility extends BaseEntity {
     @NotNull
     private String city;
 
-//    @JsonIgnore
+    //    @JsonIgnore
     @Column(name = "sport_id")
     private String sportId;
 

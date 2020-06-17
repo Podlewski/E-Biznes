@@ -4,11 +4,11 @@ INSERT INTO User (id, email, password, role, first_Name,last_Name, birth_Date, p
 
 
 INSERT INTO Sport VALUES -- ID, ADDRESS, ANIMATOR_ID, BOOKING_DATE, CITY, NAME, NUMBER_OF_SUBFACILITIES, PAUSE_DATE, PHONE, POSTCODE, SPORT_ID
-    (0, 'volleyball'),
-    (1, 'basketball'),
-    (2, 'baseball'),
-    (3, 'golf'),
-    (4, 'dance');
+    (0, 'Volleyball'),
+    (1, 'Basketball'),
+    (2, 'Baseball'),
+    (3, 'Golf'),
+    (4, 'Dance');
 
 INSERT INTO Facility ( ID, ADDRESS, ANIMATOR_ID, BOOKING_DATE, CITY, NAME, NUMBER_OF_SUBFACILITIES, PAUSE_DATE, PHONE, POSTCODE, SPORT_ID, PRICE)
     VALUES

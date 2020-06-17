@@ -31,7 +31,7 @@ class SearchObjects extends Component {
   }
 
   setCategory(category) {
-    this.setState({displayCategory: category});
+    this.setState({ displayCategory: category });
   }
 
   fillData(url) {
@@ -66,7 +66,7 @@ class SearchObjects extends Component {
       ).filter(facility =>
         facility.name.toUpperCase().includes(this.state.search.toUpperCase())
       ).map(facility => (
-        elements.push(<SingleSearchObject facility={facility} />)
+        elements.push(<SingleSearchObject facility={facility} view={true} />)
       ))
     }
     return elements
@@ -74,7 +74,7 @@ class SearchObjects extends Component {
 
   search = (event) => {
     let keyword = event.target.value;
-    this.setState({search: keyword});
+    this.setState({ search: keyword });
   }
 
   render() {

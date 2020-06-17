@@ -61,14 +61,15 @@ class SportObject extends Component {
   fillEvents(reservations) {
     const events = []
     reservations.map((reservation) => {
-      if(reservation.status ==="PAYED" || reservation.status ==="NOT_PAYED"){
-      events.push({
-        id: reservation.id,
-        text: "Reservation " + reservation.id,
-        start: reservation.reservationDate,
-        end: reservation.endDate
-      })
-    }})
+      if (reservation.status === "PAYED" || reservation.status === "NOT_PAYED") {
+        events.push({
+          id: reservation.id,
+          text: "Reservation " + reservation.id,
+          start: reservation.reservationDate,
+          end: reservation.endDate
+        })
+      }
+    })
     this.setState({
       startDate: "2020-06-15",
       events: events
@@ -115,13 +116,12 @@ class SportObject extends Component {
   }
 
   pictogram(sport) {
-    
+
     const picStyle = { height: 225 };
 
-    switch(sport)
-    {
+    switch (sport) {
       case "baseball":
-        return <img src={"/pic/baseball.jpg"} alt="Baseball pictogram" style={picStyle} />     
+        return <img src={"/pic/baseball.jpg"} alt="Baseball pictogram" style={picStyle} />
       case "basketball":
         return <img src={"/pic/basketball.jpg"} alt="Basketball pictogram" style={picStyle} />
       case "dance":

@@ -62,6 +62,27 @@ class EditSportObject extends Component {
     };
   }
 
+  pictogram(sport) {
+
+    const picStyle = { height: 225 };
+
+    switch (sport) {
+      case "baseball":
+        return <img src={"/pic/baseball.jpg"} alt="Baseball pictogram" style={picStyle} />
+      case "basketball":
+        return <img src={"/pic/basketball.jpg"} alt="Basketball pictogram" style={picStyle} />
+      case "dance":
+        return <img src={"/pic/dance.jpg"} alt="Dance pictogram" style={picStyle} />
+      case "golf":
+        return <img src={"/pic/golf.jpg"} alt="Golf pictogram" style={picStyle} />
+      case "volleyball":
+        return <img src={"/pic/volleyball.jpg"} alt="Volleyball pictogram" style={picStyle} />
+      default:
+        return <></>
+    }
+
+  }
+
   componentDidMount() {
     this.fillData();
   }
@@ -159,8 +180,7 @@ class EditSportObject extends Component {
                   <h5>Price</h5>
                   <h4>{this.state.price} PLN/H</h4>
                 </div>
-                Graphics?
-              </div>
+                {this.pictogram(this.state.sport)}              </div>
             </div>
             <div>
               <div style={styles.left}>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { withRouter } from "react-router-dom";
 import { LoggedNavigation } from "./index.js";
 import SingleSearchObject from './SingleSearchObject'
@@ -31,7 +31,7 @@ class MyObjects extends Component {
   }
 
   setCategory(category) {
-    this.setState({displayCategory: category});
+    this.setState({ displayCategory: category });
   }
 
   fillData(url) {
@@ -74,7 +74,7 @@ class MyObjects extends Component {
 
   search = (event) => {
     let keyword = event.target.value;
-    this.setState({search: keyword});
+    this.setState({ search: keyword });
   }
 
   render() {
