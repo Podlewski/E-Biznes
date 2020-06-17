@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import "./Login.css";
 import { LoggedNavigation } from "./index.js"
-// import checkIfLoggedIn from "./LoginChekker";
-
 
 const emailRegex = RegExp(
   /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
@@ -33,17 +31,16 @@ class AccountData extends Component {
         firstName: "",
         lastName: "",
         email: "",
-        phoneNumber: "",
+        phone: "",
       }
     };
 
-    // this.checkIfLoggedIn(props);
+    this.checkIfLoggedIn(props);
     this.fillData();
   }
 
-   checkIfLoggedIn(props){ 
-    if(!localStorage.getItem('login'))
-    {
+  checkIfLoggedIn(props) {
+    if (!localStorage.getItem('login')) {
       console.log(localStorage.getItem('login'))
       props.history.push('/');
     }
@@ -63,7 +60,7 @@ class AccountData extends Component {
               firstName: result.firstName,
               lastName: result.lastName,
               email: result.email,
-              phoneNumber: result.phoneNumber,
+              phone: result.phone,
             })
             console.log("state", this.state.email);
           })
@@ -86,7 +83,7 @@ class AccountData extends Component {
           console.log('User deleted:' + localStorage.getItem("userId"))
           localStorage.removeItem("userId")
           localStorage.removeItem('login')
-            this.props.history.push('/login');
+          this.props.history.push('/login');
         }
         else {
           console.log('Cannot delete user');
@@ -102,11 +99,37 @@ class AccountData extends Component {
     if (formValid(this.state.formErrors)) {
       console.log(`${this.state.isUser}`)
       console.log(`SUCCESS: VALID DATA`)
+      this.updateData();
     }
     else {
       console.error(`ERORR: INVALID DATA`)
     }
   };
+
+  updateData() {
+    var jsonStatus = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      phone: this.state.phone
+    }
+
+    fetch('http://localhost:8080/user/' + localStorage.getItem("userId"),
+      {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(jsonStatus)
+      }).then((response) => {
+        if (response.ok) {
+          this.fillData();
+          this.setState({ readOnly: true });
+        }
+        else {
+          console.log('Cannot update user');
+          this.setState({ error: true });
+        }
+      })
+  }
+
 
   handleChange = e => {
     e.preventDefault();
@@ -123,8 +146,8 @@ class AccountData extends Component {
       case "email":
         formErrors.email = emailRegex.test(value) ? "" : "Invalid email address";
         break;
-      case "phoneNumber":
-        formErrors.phoneNumber = phoneRegex.test(value) ? "" : "Invalid phone number";
+      case "phone":
+        formErrors.phone = phoneRegex.test(value) ? "" : "Invalid phone number";
         break;
       default:
         break;
@@ -133,7 +156,7 @@ class AccountData extends Component {
   };
 
   handleClick = e => {
-    this.setState({ readOnly: false })
+    this.setState({ readOnly: !this.state.readOnly })
   };
 
 
@@ -148,8 +171,13 @@ class AccountData extends Component {
         <div className="wrapper-2">
           <div class="form-wrapper-2">
             <div class="row align-items-center my-5">
-            {errorMsg}
+              {errorMsg}
               <form onSubmit={this.handleSubmit}>
+                <div className="email">
+                  <label htmlFor="email">Email</label>
+                  <input type="text" defaultValue={this.state.email} readOnly='true' className={formErrors.email.length > 0 ? "error" : null} placeholder="Email address" name="email" onChange={this.handleChange} />
+                  {formErrors.email.length > 0 && (<span className="errorMessage">{formErrors.email}</span>)}
+                </div>
                 <div className="firstName">
                   <label htmlFor="firstName">First Name</label>
                   <input type="text" defaultValue={this.state.firstName} readOnly={this.state.readOnly} className={formErrors.firstName.length > 0 ? "error" : null} placeholder="First Name" name="firstName" onChange={this.handleChange} />
@@ -160,15 +188,10 @@ class AccountData extends Component {
                   <input type="text" defaultValue={this.state.lastName} readOnly={this.state.readOnly} className={formErrors.lastName.length > 0 ? "error" : null} placeholder="Last Name" name="lastName" onChange={this.handleChange} />
                   {formErrors.lastName.length > 0 && (<span className="errorMessage">{formErrors.lastName}</span>)}
                 </div>
-                <div className="email">
-                  <label htmlFor="email">Email</label>
-                  <input type="text" defaultValue={this.state.email} readOnly={this.state.readOnly} className={formErrors.email.length > 0 ? "error" : null} placeholder="Email address" name="email" onChange={this.handleChange} />
-                  {formErrors.email.length > 0 && (<span className="errorMessage">{formErrors.email}</span>)}
-                </div>
                 <div className="leftField halfField">
-                  <label htmlFor="phoneNumber">Phone Number</label>
-                  <input type="text" defaultValue={this.state.phoneNumber} readOnly={this.state.readOnly} className={formErrors.phoneNumber.length > 0 ? "error" : null} placeholder="Phone number" name="phoneNumber" onChange={this.handleChange} />
-                  {formErrors.phoneNumber.length > 0 && (<span className="errorMessage">{formErrors.phoneNumber}</span>)}
+                  <label htmlFor="phone">Phone Number</label>
+                  <input type="text" defaultValue={this.state.phone} readOnly={this.state.readOnly} className={formErrors.phone.length > 0 ? "error" : null} placeholder="Phone number" name="phone" onChange={this.handleChange} />
+                  {formErrors.phone.length > 0 && (<span className="errorMessage">{formErrors.phone}</span>)}
                 </div>
                 <div className="my-auto">
                   <label clasName="mx-3" htmlFor="edit">Edit</label>

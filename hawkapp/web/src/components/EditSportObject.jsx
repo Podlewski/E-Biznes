@@ -24,7 +24,7 @@ class EditSportObject extends Component {
       timeRangeSelectedHandling: "Enabled",
       onBeforeEventRender: args => {
         args.data.areas = [
-          { top: 6, right: 10, width: 12, height: 14, icon: "icon-triangle-down", visibility: "Visible", action: "ContextMenu", style: "font-size: 12px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; padding: 3px 3px 0px 3px; cursor:pointer;"}
+          { top: 6, right: 10, width: 12, height: 14, icon: "icon-triangle-down", visibility: "Visible", action: "ContextMenu", style: "font-size: 12px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; padding: 3px 3px 0px 3px; cursor:pointer;" }
         ];
         args.data.borderColor = "darker";
       },
@@ -34,29 +34,31 @@ class EditSportObject extends Component {
             text: "Delete",
             onClick: args => {
               var e = args.source;
-              
-              var jsonStatus = {status: "CANCELLED"}
 
-            fetch('http://localhost:8080/reservation/' + e.data.id,
-            {
-              method: 'PATCH',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(jsonStatus)
-            }).then((response) => {
-              if (response.ok) {
-              e.backColor = "#f5799b"
-              this.calendar.events.remove(e)
-              this.calendar.events.add({
-                  id: e.data.id,
-                  text: e.data.text,
-                  start: e.data.start,
-                  end: e.data.end,
-                  backColor: "#f5788b"
+              var jsonStatus = { status: "CANCELLED" }
+
+              fetch('http://localhost:8080/reservation/' + e.data.id,
+                {
+                  method: 'PATCH',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify(jsonStatus)
+                }).then((response) => {
+                  if (response.ok) {
+                    e.backColor = "#f5799b"
+                    this.calendar.events.remove(e)
+                    this.calendar.events.add({
+                      id: e.data.id,
+                      text: e.data.text,
+                      start: e.data.start,
+                      end: e.data.end,
+                      backColor: "#f5788b"
+                    })
+                  }
                 })
-              }
-            })
-            }}  
-        ]})
+            }
+          }
+        ]
+      })
     };
   }
 
@@ -93,7 +95,7 @@ class EditSportObject extends Component {
   fillEvents(reservations) {
     const events = []
     reservations.map((reservation) => {
-      if(reservation.status ==="PAYED"){
+      if (reservation.status === "PAYED") {
         events.push({
           id: reservation.id,
           text: "Reservation " + reservation.id,
@@ -101,7 +103,7 @@ class EditSportObject extends Component {
           end: reservation.endDate,
           backColor: "#6eb1f0"
         })
-      } else if(reservation.status ==="CANCELLED") {
+      } else if (reservation.status === "CANCELLED") {
         events.push({
           id: reservation.id,
           text: "Reservation " + reservation.id,
@@ -128,16 +130,6 @@ class EditSportObject extends Component {
 
   render() {
     var { ...config } = this.state;
-
-    var errorMsg
-    if (localStorage.getItem('userBlocked') === 'true') {
-      errorMsg = (
-        <div class="block-error">
-          <h5>You are blocked and you can't add reservation</h5>
-        </div>
-      )
-    }
-
     return (
       <>
         <LoggedNavigation />
@@ -170,7 +162,6 @@ class EditSportObject extends Component {
                 Graphics?
               </div>
             </div>
-            {errorMsg}
             <div>
               <div style={styles.left}>
                 <DayPilotNavigator

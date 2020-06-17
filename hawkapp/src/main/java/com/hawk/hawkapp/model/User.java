@@ -45,7 +45,7 @@ public class User extends BaseEntity {
     private Timestamp birthDate;
 
     @Column
-    private String phone;
+    private String phone ="600789345";
 
     @Column
     private Boolean isBlocked = Boolean.FALSE;

@@ -4,11 +4,6 @@ import {withRouter} from "react-router-dom";
 import "./SportObject.css";
 import "./Login.css";
 
-const sports = [
-  'Voleyball',
-  'Golf',
-  'Football']
-
 class CreateSportObject extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +33,6 @@ class CreateSportObject extends Component {
     e.preventDefault();
     this.createObject();
   };
-
 
   createObject() {
     fetch('http://localhost:8080/facility',
@@ -109,7 +103,7 @@ class CreateSportObject extends Component {
                 {formErrors.phone.length > 0 && (<span className="errorMessage">{formErrors.phone}</span>)}
               </div>
               <div className="halfField rightField">
-                <label htmlFor="price">Price</label>
+                <label htmlFor="price">Price PLN/H </label>
                 <input type="text" pattern="[0-9]*" className={formErrors.price.length > 0 ? "error" : null} placeholder="Price" name="price" onChange={this.handleChange} />
                 {formErrors.price.length > 0 && (<span className="errorMessage">{formErrors.price}</span>)}
               </div>

@@ -1,6 +1,7 @@
 package com.hawk.hawkapp.controller;
 
 import com.hawk.hawkapp.controller.dto.BlockadeDTO;
+import com.hawk.hawkapp.controller.dto.UpdateUserDTO;
 import com.hawk.hawkapp.model.User;
 import com.hawk.hawkapp.service.intf.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,18 +48,14 @@ public class UserController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Void> update(@RequestBody User user,
+    public ResponseEntity<Void> update(@RequestBody UpdateUserDTO user,
                                        @PathVariable("id") Long id) {
         User userById = userService.findById(id);
 
-        if (userById == null) {
-            userService.add(user);
-            user.setPassword(encoder.encode(user.getPassword()));
-            return ResponseEntity.created(URI.create(String.format("/user/%d", id))).build();
-        }
-
-        user.setPassword(encoder.encode(user.getPassword()));
-        userService.update(user, id);
+        userById.setPhone(user.getPhone());
+        userById.setLastName(user.getLastName());
+        userById.setFirstName(user.getFirstName());
+        userService.update(userById, id);
         return ResponseEntity.noContent().build();
     }
 }

@@ -58,7 +58,7 @@ class Registration extends Component {
       lastName: this.state.lastName,
       email: this.state.email,
       birthDate: this.state.birthDate,
-      phoneNumber: this.state.phoneNumber,
+      phone: this.state.phoneNumber,
       password: this.state.password,
     }
 
