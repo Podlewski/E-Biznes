@@ -23,3 +23,6 @@ INSERT INTO Facility ( ID, ADDRESS, ANIMATOR_ID, BOOKING_DATE, CITY, NAME, NUMBE
 INSERT INTO Reservation (id, facility_id, user_id, creation_Date, status, reservation_Date, end_date) VALUES
     (0,0,0,'2020-08-02 01:00:00', 'PAYED', '2020-06-02 12:00:00', '2020-06-02 13:00:00'),
     (1,0,1,'2020-08-02 01:00:00', 'PAYED', '2020-06-02 15:00:00', '2020-06-02 16:00:00');
+
+INSERT INTO Report (id, reporter_id, reported_id, message) VALUES
+    (0, 0, 1, 'bad user');

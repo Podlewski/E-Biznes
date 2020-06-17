@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from "react-router-dom";
 import { LoggedNavigation } from "./index.js";
-import SingleSearchObject from './SingleSearchObject'
+import SingleReport from './SingleReport'
 import "./Style.css"
 
 class Reports extends Component {
@@ -9,29 +9,14 @@ class Reports extends Component {
     super(props);
 
     this.state = {
-      search: "",
-      displayCategory: "all",
-      categories: [],
-      facilities: [],
+      reports: [],
     };
 
     this.fillData();
   }
 
-  createCategories() {
-    return this.state.categories.map(category => (
-      <button className="btn-category mx-1" key={category} onClick={() => this.setCategory(category)}>
-        {category}
-      </button>
-    ))
-  }
-
   componentDidMount() {
-    this.fillData('http://localhost:8080/facility');
-  }
-
-  setCategory(category) {
-    this.setState({displayCategory: category});
+    this.fillData('http://localhost:8080/report');
   }
 
   fillData(url) {
@@ -43,17 +28,13 @@ class Reports extends Component {
         if (response.ok) {
           response.json().then((result) => {
             this.setState({
-              facilities: result
+              reports: result
             })
-            console.log("state", this.state.facilities);
-
-            this.setState({
-              categories: ["all", ...new Set(result.map(x => x.city))]
-            })
+            console.log("state", this.state.reports);
           })
         }
         else {
-          console.log('Wrong facilities');
+          console.log('Wrong reports');
         }
       })
   }
@@ -61,20 +42,11 @@ class Reports extends Component {
   createGridPanel() {
     let elements = []
     {
-      this.state.facilities.filter(facility =>
-        facility.city === this.state.displayCategory || this.state.displayCategory === "all"
-      ).filter(facility =>
-        facility.name.toUpperCase().includes(this.state.search.toUpperCase())
-      ).map(facility => (
-        elements.push(<SingleSearchObject facility={facility} />)
+      this.state.reports.map(report => (
+        elements.push(<SingleReport report={report} />)
       ))
     }
     return elements
-  }
-
-  search = (event) => {
-    let keyword = event.target.value;
-    this.setState({search: keyword});
   }
 
   render() {
