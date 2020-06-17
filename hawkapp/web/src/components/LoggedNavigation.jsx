@@ -30,6 +30,9 @@ function adminNavigation(props) {
         <Link class="nav-link" to="/SearchObjects">Search</Link>
       </li>
       <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+        <Link class="nav-link" to="/Reports">Reports</Link>
+      </li>
+      <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
         <Link class="nav-link" to="/accountData">Account data</Link>
       </li>
       <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>
