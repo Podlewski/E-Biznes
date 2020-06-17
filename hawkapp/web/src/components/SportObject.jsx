@@ -126,9 +126,9 @@ class SportObject extends Component {
         return <img src={"/pic/basketball.jpg"} alt="Basketball pictogram" style={picStyle} />
       case "dance":
         return <img src={"/pic/dance.jpg"} alt="Dance pictogram" style={picStyle} />
-      case "basketball":
+      case "golf":
         return <img src={"/pic/golf.jpg"} alt="Golf pictogram" style={picStyle} />
-      case "basketball":
+      case "volleyball":
         return <img src={"/pic/volleyball.jpg"} alt="Volleyball pictogram" style={picStyle} />
       default:
         return <></>
