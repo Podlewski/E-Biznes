@@ -58,6 +58,27 @@ public class AuthController {
                 roles));
     }
 
+    @PostMapping("/signup")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
+        if (userRepository.existsByEmail(signUpRequest.getEmail())) {
+            return ResponseEntity
+                    .badRequest()
+                    .body(new MessageResponse("Error: Email is already in use!"));
+        }
+
+        User user = new User();
+        user.setEmail(signUpRequest.getEmail());
+        user.setPassword(encoder.encode(signUpRequest.getPassword()));
+        user.setBirthDate(signUpRequest.getBirthDate());
+        user.setRole(UserRole.valueOf(signUpRequest.getRole()));
+        user.setFirstName(signUpRequest.getFirstName());
+        user.setLastName(signUpRequest.getLastName());
+        user.setPhone(signUpRequest.getPhone());
+        userRepository.save(user);
+
+        return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
+    }
+
     @PostMapping("/signup/plain")
     public ResponseEntity<?> registerPlainUser(@Valid @RequestBody User signUpRequest) {
         if (userRepository.existsByEmail(signUpRequest.getEmail())) {

@@ -49,4 +49,5 @@ public class ReservationController {
     List<Reservation> filter(@RequestParam(value = "search") String query) {
         return reservationService.filter(query);
     }
+
 }

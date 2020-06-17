@@ -2,6 +2,7 @@ package com.hawk.hawkapp.service.impl;
 
 import com.github.tennaito.rsql.jpa.JpaCriteriaQueryVisitor;
 import com.hawk.hawkapp.model.Reservation;
+import com.hawk.hawkapp.model.ReservationStatus;
 import com.hawk.hawkapp.repository.ReservationRepository;
 import com.hawk.hawkapp.service.intf.ReservationService;
 import cz.jirutka.rsql.parser.RSQLParser;
@@ -37,8 +38,8 @@ public class ReservationServiceImpl extends BaseServiceImpl<ReservationRepositor
             throw new InvalidParameterException();
         }
 
-        if (repository.existsByReservationDateBetweenOrEndDateBetween(reservation.getReservationDate(),
-                reservation.getEndDate(), reservation.getReservationDate(), reservation.getEndDate())) {
+        if (repository.existsByReservationDateBetweenOrEndDateBetweenAndStatusIsNot(reservation.getReservationDate(),
+                reservation.getEndDate(), reservation.getReservationDate(), reservation.getEndDate(), ReservationStatus.CANCELLED)) {
             throw new InvalidParameterException();
         }
 

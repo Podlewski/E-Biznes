@@ -14,7 +14,7 @@ const styles = {
   }
 };
 
-class SportObject extends Component {
+class EditSportObject extends Component {
   constructor(props) {
     super(props);
 
@@ -22,14 +22,46 @@ class SportObject extends Component {
       viewType: "Week",
       durationBarVisible: true,
       timeRangeSelectedHandling: "Enabled",
+      onBeforeEventRender: args => {
+        args.data.areas = [
+          { top: 6, right: 10, width: 12, height: 14, icon: "icon-triangle-down", visibility: "Visible", action: "ContextMenu", style: "font-size: 12px; background-color: #fff; border: 1px solid #ccc; border-radius: 5px; padding: 3px 3px 0px 3px; cursor:pointer;"}
+        ];
+        args.data.borderColor = "darker";
+      },
+      contextMenu: new DayPilot.Menu({
+        items: [
+          {
+            text: "Delete",
+            onClick: args => {
+              var e = args.source;
+              
+              var jsonStatus = {status: "CANCELLED"}
+
+            fetch('http://localhost:8080/reservation/' + e.data.id,
+            {
+              method: 'PATCH',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(jsonStatus)
+            }).then((response) => {
+              if (response.ok) {
+              e.backColor = "#f5799b"
+              this.calendar.events.remove(e)
+              this.calendar.events.add({
+                  id: e.data.id,
+                  text: e.data.text,
+                  start: e.data.start,
+                  end: e.data.end,
+                  backColor: "#f5788b"
+                })
+              }
+            })
+            }}  
+        ]})
     };
   }
 
   componentDidMount() {
     this.fillData();
-    if (localStorage.getItem('userBlocked') === 'false') {
-      this.addReservationCreator();
-    }
   }
 
   fillData() {
@@ -61,57 +93,37 @@ class SportObject extends Component {
   fillEvents(reservations) {
     const events = []
     reservations.map((reservation) => {
-      if(reservation.status ==="PAYED" || reservation.status ==="NOT_PAYED"){
-      events.push({
-        id: reservation.id,
-        text: "Reservation " + reservation.id,
-        start: reservation.reservationDate,
-        end: reservation.endDate
-      })
-    }})
+      if(reservation.status ==="PAYED"){
+        events.push({
+          id: reservation.id,
+          text: "Reservation " + reservation.id,
+          start: reservation.reservationDate,
+          end: reservation.endDate,
+          backColor: "#6eb1f0"
+        })
+      } else if(reservation.status ==="CANCELLED") {
+        events.push({
+          id: reservation.id,
+          text: "Reservation " + reservation.id,
+          start: reservation.reservationDate,
+          end: reservation.endDate,
+          backColor: "#f5788b"
+        })
+      } else {
+        events.push({
+          id: reservation.id,
+          text: "Reservation " + reservation.id,
+          start: reservation.reservationDate,
+          end: reservation.endDate,
+          backColor: "#92f09c"
+        })
+      }
+    })
     this.setState({
       startDate: "2020-06-15",
       events: events
     }
     )
-  }
-
-  addReservationCreator() {
-    const id = this.props.match.params.id;
-
-    this.setState({
-      error: false,
-      onTimeRangeSelected: args => {
-        let dp = this.calendar;
-        DayPilot.Modal.prompt("Create a new reservation:").then(function (modal) {
-          dp.clearSelection();
-          if (!modal.result) { return; }
-
-          var reservation = {
-            facilityId: id,
-            userId: localStorage.getItem("userId"),
-            reservationDate: args.start,
-            endDate: args.end
-          }
-          fetch('http://localhost:8080/reservation',
-            {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(reservation)
-            }).then((response) => {
-              if (response.ok) {
-                console.log(response)
-                dp.events.add(new DayPilot.Event({
-                  start: args.start,
-                  end: args.end,
-                  id: DayPilot.guid(),
-                  text: modal.result
-                }));
-              }
-            })
-        });
-      },
-    })
   }
 
   render() {
@@ -199,4 +211,4 @@ class SportObject extends Component {
   }
 }
 
-export default withRouter(SportObject);
+export default withRouter(EditSportObject);

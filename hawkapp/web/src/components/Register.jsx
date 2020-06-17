@@ -62,7 +62,7 @@ class Registration extends Component {
       password: this.state.password,
     }
 
-    fetch('http://localhost:8080/api/auth/signup/plain',
+    fetch('http://localhost:8080/api/auth/signup',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

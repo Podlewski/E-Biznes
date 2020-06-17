@@ -16,7 +16,7 @@ public class SignUpRequest {
     private String password;
 
     @NotNull
-    private boolean isUser;
+    private String role;
 
     @NotNull
     private String firstName;

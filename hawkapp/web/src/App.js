@@ -2,7 +2,7 @@ import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Footer, Home, Login, Register, SearchObjects, MyObjects, AccountData,
-         SportObject, Navigation, CreateSportObject, Logout, Reports } from "./components";
+         SportObject, Navigation, CreateSportObject, Logout, Reports, EditSportObject } from "./components";
 import "./components/Login.css"
 
 function App() {
@@ -29,6 +29,7 @@ function App() {
           <Route path="/sportObject/:id" exact component={props => <SportObject {...props} />} />
           <Route path="/newObject" exact component={() => <CreateSportObject/>} />
           <Route path="/reports" exact component={() => <Reports/>} />
+          <Route path="/editObject/:id" exact component={props => <EditSportObject {... props}/>} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />

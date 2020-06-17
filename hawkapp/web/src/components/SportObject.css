@@ -12,6 +12,12 @@
   padding-bottom: 10px;
 }
 
+.block-error {
+  padding-bottom: 10px;
+  color: red;
+  text-align: center;
+}
+
 .calendar_default_event_inner {
   background: #2e78d6;
   color: #fff;

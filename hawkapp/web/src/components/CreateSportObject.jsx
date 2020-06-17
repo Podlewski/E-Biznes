@@ -20,6 +20,7 @@ class CreateSportObject extends Component {
       postCode: null,
       city: null,
       price: null,
+      phone: null,
       animatorId: localStorage.getItem("userId"),
       formErrors: {
         name: "",
@@ -27,7 +28,8 @@ class CreateSportObject extends Component {
         address: "",
         postCode: "",
         city: "",
-        price:""
+        price:"",
+        phone:""
       }
     };
   }
@@ -92,7 +94,7 @@ class CreateSportObject extends Component {
                 <input type="text" className={formErrors.name.length > 0 ? "error" : null} placeholder="Object Name" name="name" onChange={this.handleChange} />
                 {formErrors.name.length > 0 && (<span className="errorMessage">{formErrors.name}</span>)}
               </div>
-              <div className="leftField">
+              <div className="fullField">
                 <select id="myList" onChange={this.setSport}>
                   <option value="0">Volleyball</option>
                   <option value="1">Basketball</option>
@@ -100,6 +102,11 @@ class CreateSportObject extends Component {
                   <option value="3">Golf</option>
                   <option value="4">Dance</option>
                 </select>
+              </div>
+              <div className="leftField">
+                <label htmlFor="phone">Phone number</label>
+                <input type="text" className={formErrors.phone.length > 0 ? "error" : null} placeholder="Phone" name="phone" onChange={this.handleChange} />
+                {formErrors.phone.length > 0 && (<span className="errorMessage">{formErrors.phone}</span>)}
               </div>
               <div className="rightField">
                 <label htmlFor="price">Price</label>
