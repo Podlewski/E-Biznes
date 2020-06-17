@@ -54,11 +54,8 @@ class Reports extends Component {
       <>
         <LoggedNavigation />
         <div className="defaultWrapper">
-          <div className="row text-center pb-3">
-            <input type="text" className="wideSearch" placeholder="Search" onChange={e => this.search(e)} />
-          </div>
           <div className="searchableObjects">
-            <h4 className="text-center">Results:</h4>
+            <h4 className="text-center">Reports:</h4>
             {this.createGridPanel()}
           </div>
         </div>
