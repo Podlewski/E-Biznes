@@ -82,15 +82,14 @@ class SearchObjects extends Component {
       <>
         <LoggedNavigation />
         <div className="defaultWrapper">
-          <div className="row text-center">
-            <input type="text" className="wideSearch" placeholder="Search" onChange={e => this.search(e)} />
+          <div className="row text-center mx-0">
+            <input type="text" className="superWideSearch" placeholder="Search" onChange={e => this.search(e)} />
           </div>
-          <div className="row py-4">
+          <div className="row mt-3 mb-4">
             <h6 className="my-auto mr-3">City filters:</h6>
             {this.createCategories()}
           </div>
           <div className="searchableObjects">
-            <h4 className="text-center">Results:</h4>
             {this.createGridPanel()}
           </div>
         </div>

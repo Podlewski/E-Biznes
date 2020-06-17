@@ -82,7 +82,7 @@ class MyObjects extends Component {
       <>
         <LoggedNavigation />
         <div className="defaultWrapper">
-          <div className="row text-center">
+          <div className="row text-center mb-4 mx-0">
             <input type="text" className="wideSearch mr-3" placeholder="Search" onChange={e => this.search(e)} />
             <Link to="/newObject">
               <button class="butt butt-h">Add Facility</button>
