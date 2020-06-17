@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaQuery;
 import java.security.InvalidParameterException;
+import java.sql.Timestamp;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,9 +33,17 @@ public class ReservationServiceImpl extends BaseServiceImpl<ReservationRepositor
         this.entityManager = entityManager;
     }
 
+    public List<Reservation> findByUserId(Long userId) {
+        return repository.getByUserId(userId);
+    }
+
     @Override
     public Reservation add(Reservation reservation) {
         if (userService.findById(reservation.getUserId()).getIsBlocked()) {
+            throw new InvalidParameterException();
+        }
+
+        if (reservation.getReservationDate().before(new Timestamp(System.currentTimeMillis() + 1000))) {
             throw new InvalidParameterException();
         }
 

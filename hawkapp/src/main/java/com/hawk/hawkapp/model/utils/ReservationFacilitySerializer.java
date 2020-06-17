@@ -15,6 +15,7 @@ public class ReservationFacilitySerializer extends JsonSerializer<Facility> {
         gen.writeStartObject();
         gen.writeStringField("facilityId", String.valueOf(value.getId()));
         gen.writeStringField("facilityName", String.valueOf(value.getName()));
+        gen.writeStringField("sport", String.valueOf(value.getSport().getName()));
         gen.writeEndObject();
 
     }

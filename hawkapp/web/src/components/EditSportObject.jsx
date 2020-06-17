@@ -67,15 +67,15 @@ class EditSportObject extends Component {
     const picStyle = { height: 225 };
 
     switch (sport) {
-      case "baseball":
+      case "Baseball":
         return <img src={"/pic/baseball.jpg"} alt="Baseball pictogram" style={picStyle} />
-      case "basketball":
+      case "Basketball":
         return <img src={"/pic/basketball.jpg"} alt="Basketball pictogram" style={picStyle} />
-      case "dance":
+      case "Dance":
         return <img src={"/pic/dance.jpg"} alt="Dance pictogram" style={picStyle} />
-      case "golf":
+      case "Golf":
         return <img src={"/pic/golf.jpg"} alt="Golf pictogram" style={picStyle} />
-      case "volleyball":
+      case "Volleyball":
         return <img src={"/pic/volleyball.jpg"} alt="Volleyball pictogram" style={picStyle} />
       default:
         return <></>

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { LoggedNavigation } from "./index.js";
-import SingleSearchObject from './SingleSearchObject'
 import "./Style.css"
+import SingleReservation from './SingleReservation.jsx';
 
 class Reservations extends Component {
   constructor(props) {
@@ -10,14 +10,14 @@ class Reservations extends Component {
 
     this.state = {
       search: "",
-      facilities: [],
+      reservations: [],
     };
 
     this.fillData();
   }
 
   componentDidMount() {
-    this.fillData('http://localhost:8080/facility');
+    this.fillData('http://localhost:8080/reservation/user/' + localStorage.getItem("userId"));
   }
 
   fillData(url) {
@@ -29,17 +29,13 @@ class Reservations extends Component {
         if (response.ok) {
           response.json().then((result) => {
             this.setState({
-              facilities: result
+              reservations: result
             })
-            console.log("state", this.state.facilities);
-
-            this.setState({
-              categories: ["all", ...new Set(result.map(x => x.city))]
-            })
+            this.setState({ hasReservations: (this.state.reservations && this.state.reservations.length) != 0 });
           })
         }
         else {
-          console.log('Wrong facilities');
+          this.setState({ hasReservations: false });
         }
       })
   }
@@ -47,30 +43,37 @@ class Reservations extends Component {
   createGridPanel() {
     let elements = []
     {
-      this.state.facilities.filter(facility =>
-        facility.city === this.state.displayCategory || this.state.displayCategory === "all"
-      ).filter(facility =>
-        facility.name.toUpperCase().includes(this.state.search.toUpperCase())
-      ).map(facility => (
-        elements.push(<SingleSearchObject facility={facility} />)
-      ))
+      this.state.reservations.map(reservation =>
+        elements.push(<SingleReservation reservation={reservation} />)
+      )
     }
     return elements
   }
 
-  search = (event) => {
-    let keyword = event.target.value;
-    this.setState({search: keyword});
-  }
-
   render() {
+    var title;
+
+    if (!this.state.hasReservations) {
+      title = (
+        <div>
+          <h1>You have no reservations.</h1>
+          <Link to={{ pathname: `searchObjects` }}>
+            Make some!
+          </Link>
+        </div>
+      );
+    } else {
+      title = (
+        <div>
+          <h1>Reservations</h1>
+        </div>
+      );
+    }
     return (
       <>
         <LoggedNavigation />
         <div className="defaultWrapper">
-          <div className="row text-center mx-0">
-            <input type="text" className="superWideSearch" placeholder="Search" onChange={e => this.search(e)} />
-          </div>
+          {title}
           <div className="searchableObjects">
             {this.createGridPanel()}
           </div>

@@ -27,7 +27,7 @@ class SportObject extends Component {
 
   componentDidMount() {
     this.fillData();
-    if (localStorage.getItem('userBlocked') === 'false' && !(localStorage.getItem('userType') === 'ANIMATOR')) {
+    if (localStorage.getItem('userBlocked') === 'false' && localStorage.getItem('userType') === 'USER') {
       this.addReservationCreator();
     }
   }
@@ -120,15 +120,15 @@ class SportObject extends Component {
     const picStyle = { height: 225 };
 
     switch (sport) {
-      case "baseball":
+      case "Baseball":
         return <img src={"/pic/baseball.jpg"} alt="Baseball pictogram" style={picStyle} />
-      case "basketball":
+      case "Basketball":
         return <img src={"/pic/basketball.jpg"} alt="Basketball pictogram" style={picStyle} />
-      case "dance":
+      case "Dance":
         return <img src={"/pic/dance.jpg"} alt="Dance pictogram" style={picStyle} />
-      case "golf":
+      case "Golf":
         return <img src={"/pic/golf.jpg"} alt="Golf pictogram" style={picStyle} />
-      case "volleyball":
+      case "Volleyball":
         return <img src={"/pic/volleyball.jpg"} alt="Volleyball pictogram" style={picStyle} />
       default:
         return <></>
@@ -146,7 +146,7 @@ class SportObject extends Component {
           <h5>You are blocked and you can't add reservation</h5>
         </div>
       )
-    } else if (localStorage.getItem('userType') === 'ANIMATOR') {
+    } else if (!(localStorage.getItem('userType') === 'USER')) {
       errorMsg = (
         <div class="block-error">
           <h5>Create USER account to add a reservation</h5>

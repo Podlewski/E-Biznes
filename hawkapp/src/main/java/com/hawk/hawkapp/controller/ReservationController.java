@@ -25,6 +25,36 @@ public class ReservationController {
         return reservationService.findById(id);
     }
 
+    @GetMapping(value = "/user/{id}")
+    List<Reservation> findByUserId(@PathVariable("id") Long id) {
+        List<Reservation> reservations = reservationService.findByUserId(id);
+
+        reservations.forEach(reservation -> {
+            reservation.setPrice(countPrice(reservation));
+        });
+        return reservations;
+    }
+
+    private double countPrice(Reservation reservation) {
+        return roundToDecimal(compareTwoTimeStamps(reservation.getEndDate(), reservation.getReservationDate())
+                * Integer.valueOf(reservation.getFacility().getPrice()) / 60, 2);
+
+    }
+
+    private static double roundToDecimal(double num, int dec) {
+        int multi = (int) Math.pow(10, dec);
+        int temp = (int) Math.round(num * multi);
+        return (double) temp / multi;
+    }
+
+    private static long compareTwoTimeStamps(Timestamp currentTime, Timestamp oldTime) {
+        long milliseconds1 = oldTime.getTime();
+        long milliseconds2 = currentTime.getTime();
+
+        long diff = milliseconds2 - milliseconds1;
+        return diff / (60 * 1000);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation add(@RequestBody Reservation reservation) {

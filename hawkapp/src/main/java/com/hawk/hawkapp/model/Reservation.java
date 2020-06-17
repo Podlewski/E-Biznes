@@ -53,4 +53,6 @@ public class Reservation extends BaseEntity {
     @Column
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss", timezone = "Europe/Berlin")
     private Timestamp endDate;
+
+    private Double price;
 }
