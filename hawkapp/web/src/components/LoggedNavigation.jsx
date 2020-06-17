@@ -8,7 +8,7 @@ function userNavigation(props) {
         <Link class="nav-link" to="/SearchObjects">Search</Link>
       </li>
       <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
-        <Link class="nav-link" to="/login">Reservations</Link>
+        <Link class="nav-link" to="/reservations">Reservations</Link>
       </li>
       <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
         <Link class="nav-link" to="/accountData">Account data</Link>

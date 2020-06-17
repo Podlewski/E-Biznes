@@ -1,8 +1,9 @@
 import React from 'react';
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Footer, Home, Login, Register, SearchObjects, MyObjects, AccountData,
-         SportObject, Navigation, CreateSportObject, Logout, Reports, EditSportObject } from "./components";
+import { AccountData, CreateSportObject, EditSportObject, Footer, Home, Login,
+         Logout, MyObjects, Navigation, Register, Reports, Reservations,
+         SearchObjects, SportObject } from "./components";
 import "./components/Login.css"
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/newObject" exact component={() => <CreateSportObject/>} />
           <Route path="/reports" exact component={() => <Reports/>} />
           <Route path="/editObject/:id" exact component={props => <EditSportObject {... props}/>} />
+          <Route path="/reservations" exact component={() => <Reservations/>} />
           <Route component={NoMatch} />
         </Switch>
         <Footer />
