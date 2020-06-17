@@ -27,6 +27,28 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+function pictogram(sport) {
+    
+  const picStyle = { height: 125 };
+
+  switch(sport)
+  {
+    case "baseball":
+      return <img src={"/pic/baseball.jpg"} alt="Baseball pictogram" style={picStyle} />     
+    case "basketball":
+      return <img src={"/pic/basketball.jpg"} alt="Basketball pictogram" style={picStyle} />
+    case "dance":
+      return <img src={"/pic/dance.jpg"} alt="Dance pictogram" style={picStyle} />
+    case "golf":
+      return <img src={"/pic/golf.jpg"} alt="Golf pictogram" style={picStyle} />
+    case "volleyball":
+      return <img src={"/pic/volleyball.jpg"} alt="Volleyball pictogram" style={picStyle} />
+    default:
+      return <></>
+  }
+}
+
 function SingleSearchObject({ facility }) {
 
   const classes = useStyles();
@@ -37,7 +59,7 @@ function SingleSearchObject({ facility }) {
         <Grid container spacing={2}>
           <Grid item>
             <ButtonBase className={classes.image}>
-              <img className={classes.img} alt="complex" src="/static/images/grid/complex.jpg" />
+              {pictogram(facility.sport.name)}
             </ButtonBase>
           </Grid>
           <Grid item xs={12} sm container>
