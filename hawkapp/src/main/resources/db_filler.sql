@@ -5,12 +5,19 @@ INSERT INTO User (id, email, password, role, first_Name,last_Name, birth_Date, p
 
 INSERT INTO Sport VALUES -- ID, ADDRESS, ANIMATOR_ID, BOOKING_DATE, CITY, NAME, NUMBER_OF_SUBFACILITIES, PAUSE_DATE, PHONE, POSTCODE, SPORT_ID
     (0, 'volleyball'),
-    (1, 'basketball');
+    (1, 'basketball'),
+    (2, 'baseball'),
+    (3, 'golf'),
+    (4, 'dance');
 
-INSERT INTO Facility VALUES -- ID, ADDRESS, ANIMATOR_ID, BOOKING_DATE, CITY, NAME, NUMBER_OF_SUBFACILITIES, PAUSE_DATE, PHONE, POSTCODE, SPORT_ID
-    (0, 'address', 0, '2100-08-02 01:00:00', 'city', 'name', 1, '2100-08-02 01:00:00', 'phone', 'postcode', 0),
-    (1, 'baldman st 69', 1, '2100-08-02 01:00:00', 'Los Ageless', 'Pump Castle', 1, '2100-08-02 01:00:00', '4201337', '90210', 1),
-    (2, 'baldman st 69', 1, '2100-08-02 01:00:00', 'Los Ageless', 'Pump Castle', 1, '2100-08-02 01:00:00', '4201337', '90210', 1);
+INSERT INTO Facility ( ID, ADDRESS, ANIMATOR_ID, BOOKING_DATE, CITY, NAME, NUMBER_OF_SUBFACILITIES, PAUSE_DATE, PHONE, POSTCODE, SPORT_ID, PRICE)
+    VALUES
+    (0, 'Włókniarzy 15', 0, '2100-08-02 01:00:00', 'Łódź', 'Fit fabric', 1, '2100-08-02 01:00:00', '700800990', '98069', 3, 200),
+    (1, 'Pabiancika 1', 0, '2100-08-02 01:00:00', 'Łódź', 'Fit fabric 2.0', 1, '2100-08-02 01:00:00', '56800990', '90569', 2, 350),
+    (2, 'Mickiewiwcza 15', 0, '2100-08-02 01:00:00', 'Warszawa', 'DanceZone', 1, '2100-08-02 01:00:00', '703400990', '10569', 4, 978),
+    (3, 'Zerka 15', 1, '2100-08-02 01:00:00', 'Warszawa', 'Fittownia', 1, '2100-08-02 01:00:00', '42800990', '10569', 0, 1045),
+    (4, 'baldman st 69', 1, '2100-08-02 01:00:00', 'Los Ageless', 'Pump Castle', 1, '2100-08-02 01:00:00', '4201337', '90210', 1, 450),
+    (5, 'baldman st 69', 1, '2100-08-02 01:00:00', 'Los Ageless', 'Pump Castle', 1, '2100-08-02 01:00:00', '4201337', '90210', 1, 300);
 
 
 INSERT INTO Reservation (id, facility_id, user_id, creation_Date, status, reservation_Date, end_date) VALUES

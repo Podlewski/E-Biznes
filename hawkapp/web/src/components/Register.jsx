@@ -51,11 +51,22 @@ class Registration extends Component {
   }
 
   register() {
-    fetch('http://localhost:8080/api/auth/signup',
+
+    const user = {
+      role: this.state.isUser ? "USER": "ANIMATOR",
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      birthDate: this.state.birthDate,
+      phoneNumber: this.state.phoneNumber,
+      password: this.state.password,
+    }
+
+    fetch('http://localhost:8080/api/auth/signup/plain',
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(this.state)
+        body: JSON.stringify(user)
       }).then((response) => {
         if (response.ok) {
           response.json().then((result) => {
@@ -82,7 +93,6 @@ class Registration extends Component {
     else {
       console.error(`ERORR: INVALID DATA`)
     }
-
     this.register();
   };
 
@@ -109,7 +119,6 @@ class Registration extends Component {
         break;
       case "password":
         formErrors.password = value.length < 6 ? "Minimum 6 characters required" : "";
-        break;
       default:
         break;
     }
@@ -117,12 +126,17 @@ class Registration extends Component {
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
 
+  toggleSwitch = (value) => {
+    this.setState({switchValue: value})
+    this.setState({isUser: !this.state.isUser})
+ }
 
   render() {
     const { formErrors } = this.state;
     var errorMsg;
-    if (this.state.error)
+    if (this.state.error){
       errorMsg = <span className="errorMessage">{this.state.errorMsg}</span>;
+    }
 
     return (
       <div className="wrapper">
@@ -135,7 +149,7 @@ class Registration extends Component {
                 <div class="row">
                   <div class="col-5 px-0" align="right">User</div>
                   <div class="col-2" align="center">
-                    <Switch onChange={() => this.setState({ isUser: !this.state.isUser })} />
+                    <Switch onChange={this.toggleSwitch} value = {this.state.switchValue} />
                   </div>
                   <div class="col-5 px-0" align="left">Animator</div>
                 </div>

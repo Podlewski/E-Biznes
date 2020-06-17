@@ -89,7 +89,6 @@ class SportObject extends Component {
             reservationDate: args.start,
             endDate: args.end
           }
-
           fetch('http://localhost:8080/reservation',
             {
               method: 'POST',

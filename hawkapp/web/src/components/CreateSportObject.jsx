@@ -1,59 +1,120 @@
 import React, { Component } from "react";
 import { LoggedNavigation } from "./index.js"
-import { Link, Redirect } from "react-router-dom";
+import {withRouter} from "react-router-dom";
 import "./SportObject.css";
 import "./Login.css";
+
+const sports = [
+  'Voleyball',
+  'Golf',
+  'Football']
 
 class CreateSportObject extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      objectName: null,
-      sportType: null,
-      street: null,
-      postalCode: null,
+      name: null,
+      sportId: 0,
+      address: null,
+      postCode: null,
       city: null,
+      price: null,
+      animatorId: localStorage.getItem("userId"),
       formErrors: {
-        objectName: "",
+        name: "",
         sportType: "",
-        street: "",
-        postalCode: "",
-        city: ""
+        address: "",
+        postCode: "",
+        city: "",
+        price:""
       }
     };
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    this.createObject();
+  };
+
+
+  createObject() {
+    fetch('http://localhost:8080/facility',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(this.state)
+      }).then((response) => {
+        if (response.ok) {
+          response.json().then((result) => {
+            this.props.history.push('/myObjects');
+          })
+        }
+        else {
+          response.json().then((result) => {
+            console.log("result", result);
+            this.setState({ error: true, errorMsg: "Fill data"});
+          })
+        }
+      })
+  }
+
+  handleChange = e => {
+    e.preventDefault();
+    const { name, value } = e.target;
+
+    let formErrors = this.state.formErrors;
+
+    this.setState({ formErrors, [name]: value }, () => console.log(this.state));
+  };
+
+  setSport = e => {
+    e.preventDefault();
+    this.setState({sportId: e.target.value});
+    console.log(this.state)
   }
 
   render() {
     const { formErrors } = this.state;
 
-
+    var errorMsg;
+    if (this.state.error)
+      errorMsg = <span className="errorMessage">{this.state.errorMsg}</span>;
     return (
       <>
         <LoggedNavigation />
-
         <div className="wrapper-2">
           <div class="object-wrapper">
             <form onSubmit={this.handleSubmit}>
+            {errorMsg}
               <div className="email">
-                <label htmlFor="objectName">Object Name</label>
-                <input type="text" className={formErrors.objectName.length > 0 ? "error" : null} placeholder="Object Name" name="objectName" onChange={this.handleChange} />
-                {formErrors.objectName.length > 0 && (<span className="errorMessage">{formErrors.objectName}</span>)}
+                <label htmlFor="name">Object Name</label>
+                <input type="text" className={formErrors.name.length > 0 ? "error" : null} placeholder="Object Name" name="name" onChange={this.handleChange} />
+                {formErrors.name.length > 0 && (<span className="errorMessage">{formErrors.name}</span>)}
+              </div>
+              <div className="leftField">
+                <select id="myList" onChange={this.setSport}>
+                  <option value="0">Volleyball</option>
+                  <option value="1">Basketball</option>
+                  <option value="2">Baseball</option>
+                  <option value="3">Golf</option>
+                  <option value="4">Dance</option>
+                </select>
+              </div>
+              <div className="rightField">
+                <label htmlFor="price">Price</label>
+                <input type="text" pattern="[0-9]*" className={formErrors.price.length > 0 ? "error" : null} placeholder="Price" name="price" onChange={this.handleChange} />
+                {formErrors.price.length > 0 && (<span className="errorMessage">{formErrors.price}</span>)}
               </div>
               <div className="fullField">
-                <label htmlFor="sportType">Sport Type</label>
-                <input type="text" className={formErrors.sportType.length > 0 ? "error" : null} placeholder="Sport type" name="sportType" onChange={this.handleChange} />
-                {formErrors.sportType.length > 0 && (<span className="errorMessage">{formErrors.sportType}</span>)}
-              </div>
-              <div className="fullField">
-                <label htmlFor="street">Street</label>
-                <input type="text" className={formErrors.street.length > 0 ? "error" : null} placeholder="Street" name="street" onChange={this.handleChange} />
-                {formErrors.street.length > 0 && (<span className="errorMessage">{formErrors.street}</span>)}
+                <label htmlFor="address">Address</label>
+                <input type="text" className={formErrors.address.length > 0 ? "error" : null} placeholder="address" name="address" onChange={this.handleChange} />
+                {formErrors.address.length > 0 && (<span className="errorMessage">{formErrors.address}</span>)}
               </div>
               <div className="leftField">
                 <label htmlFor="postalCode">Postal Code</label>
-                <input type="text" className={formErrors.postalCode.length > 0 ? "error" : null} placeholder="Postal Code" name="postalCode" onChange={this.handleChange} />
-                {formErrors.postalCode.length > 0 && (<span className="errorMessage">{formErrors.postalCode}</span>)}
+                <input type="text" className={formErrors.postCode.length > 0 ? "error" : null} placeholder="Postal Code" name="postCode" onChange={this.handleChange} />
+                {formErrors.postCode.length > 0 && (<span className="errorMessage">{formErrors.postCode}</span>)}
               </div>
               <div className="rightField">
                 <label htmlFor="city">City</label>
@@ -71,4 +132,4 @@ class CreateSportObject extends Component {
   }
 }
 
-export default CreateSportObject;
+export default withRouter(CreateSportObject);

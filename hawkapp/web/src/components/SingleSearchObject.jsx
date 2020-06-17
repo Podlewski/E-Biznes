@@ -65,7 +65,7 @@ function SingleSearchObject({ facility }) {
               </Grid> */}
             </Grid>
             <Grid item>
-              <Typography variant="subtitle1">$19.00</Typography>
+            <Typography variant="subtitle1">{facility.price} PLN/H</Typography>
             </Grid>
           </Grid>
         </Grid>

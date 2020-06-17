@@ -34,11 +34,14 @@ public class FacilityController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Facility add(@RequestBody Facility facility) {
+    public Facility add(@RequestBody Facility facility) throws Exception {
+        if (facility.getCity() == null || facility.getAddress() == null || facility.getAnimatorId() == null || facility.getPrice() == null)
+            throw new Exception("Fill data");
         return facilityService.add(facility);
     }
 
-    @GetMapping(value = "/filter") // /facility/filter?search=address==address
+    @GetMapping(value = "/filter")
+        // /facility/filter?search=address==address
     List<Facility> filter(@RequestParam(value = "search") String query) {
         return facilityService.filter(query);
     }

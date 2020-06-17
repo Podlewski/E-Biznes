@@ -30,6 +30,7 @@ public class ReservationController {
     public Reservation add(@RequestBody Reservation reservation) {
         reservation.setCreationDate(new Timestamp(System.currentTimeMillis()));
         reservation.setStatus(ReservationStatus.NOT_PAYED);
+
         return reservationService.add(reservation);
     }
 

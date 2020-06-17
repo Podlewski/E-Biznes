@@ -45,6 +45,8 @@ class Login extends Component {
               token: result.token,
             }))
             localStorage.setItem('userId', result.id)
+            localStorage.setItem('userType', result.role)
+            localStorage.setItem('userBlocked', result.isBlocked)
             this.props.history.push('/searchObjects');
           })
         }
