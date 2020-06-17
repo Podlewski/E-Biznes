@@ -114,6 +114,28 @@ class SportObject extends Component {
     })
   }
 
+  pictogram(sport) {
+    
+    const picStyle = { height: 225 };
+
+    switch(sport)
+    {
+      case "baseball":
+        return <img src={"/pic/baseball.jpg"} alt="Baseball pictogram" style={picStyle} />     
+      case "basketball":
+        return <img src={"/pic/basketball.jpg"} alt="Basketball pictogram" style={picStyle} />
+      case "dance":
+        return <img src={"/pic/dance.jpg"} alt="Dance pictogram" style={picStyle} />
+      case "basketball":
+        return <img src={"/pic/golf.jpg"} alt="Golf pictogram" style={picStyle} />
+      case "basketball":
+        return <img src={"/pic/volleyball.jpg"} alt="Volleyball pictogram" style={picStyle} />
+      default:
+        return <></>
+    }
+
+  }
+
   render() {
     var { ...config } = this.state;
 
@@ -121,7 +143,7 @@ class SportObject extends Component {
     if (localStorage.getItem('userBlocked') === 'true') {
       errorMsg = (
         <div class="block-error">
-          <h5>You are blocked and you can't add reservation</h5>
+          <h5 className="h5-grey">You are blocked and you can't add reservation</h5>
         </div>
       )
     }
@@ -134,28 +156,28 @@ class SportObject extends Component {
             <div class="row pb-5">
               <div class="col-sm">
                 <div class="block">
-                  <h5>Object Name</h5>
+                  <h5 className="h5-grey">Object Name</h5>
                   <h4>{this.state.name}</h4>
                 </div>
                 <div class="block">
-                  <h5>Sport type</h5>
+                  <h5 className="h5-grey">Sport type</h5>
                   <h4>{this.state.sport}</h4>
                 </div>
                 <div class="block">
-                  <h5>Address</h5>
+                  <h5 className="h5-grey">Address</h5>
                   <h4>{this.state.address}</h4>
                 </div>
-                <div class="block">
-                  <h5>Phone number</h5>
+                <div>
+                  <h5 className="h5-grey">Phone number</h5>
                   <h4>{this.state.phone}</h4>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="block">
-                  <h5>Price</h5>
+                  <h5 className="h5-grey">Price</h5>
                   <h4>{this.state.price} PLN/H</h4>
                 </div>
-                Graphics?
+                {this.pictogram(this.state.sport)}
               </div>
             </div>
             {errorMsg}

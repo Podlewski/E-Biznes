@@ -9,7 +9,7 @@
 }
 
 .block {
-  padding-bottom: 10px;
+  padding-bottom: 20px;
 }
 
 .block-error {
@@ -25,4 +25,8 @@
   font-size: 10pt;
   padding: 5px;
   opacity: 0.8;
+}
+
+.h5-grey {
+  color: #999;
 }

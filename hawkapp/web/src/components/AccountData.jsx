@@ -165,14 +165,14 @@ class AccountData extends Component {
                   <input type="text" defaultValue={this.state.email} readOnly={this.state.readOnly} className={formErrors.email.length > 0 ? "error" : null} placeholder="Email address" name="email" onChange={this.handleChange} />
                   {formErrors.email.length > 0 && (<span className="errorMessage">{formErrors.email}</span>)}
                 </div>
-                <div className="phoneNumber">
+                <div className="leftField halfField">
                   <label htmlFor="phoneNumber">Phone Number</label>
                   <input type="text" defaultValue={this.state.phoneNumber} readOnly={this.state.readOnly} className={formErrors.phoneNumber.length > 0 ? "error" : null} placeholder="Phone number" name="phoneNumber" onChange={this.handleChange} />
                   {formErrors.phoneNumber.length > 0 && (<span className="errorMessage">{formErrors.phoneNumber}</span>)}
                 </div>
-                <div>
-                  <label htmlFor="edit">Edit</label>
-                  <input type="checkbox" checked={!this.state.readOnly} onClick={this.handleClick} />
+                <div className="my-auto">
+                  <label clasName="mx-3" htmlFor="edit">Edit</label>
+                  <input clasName="mx-3" type="checkbox" checked={!this.state.readOnly} onClick={this.handleClick} />
                 </div>
                 <div className="createAccount">
                   <button type="submit" disabled={this.state.readOnly}>Save changes</button>
