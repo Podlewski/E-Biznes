@@ -27,7 +27,7 @@ class SportObject extends Component {
 
   componentDidMount() {
     this.fillData();
-    if (localStorage.getItem('userBlocked') === 'false') {
+    if (localStorage.getItem('userBlocked') === 'false' && !(localStorage.getItem('userType') === 'ANIMATOR')) {
       this.addReservationCreator();
     }
   }
@@ -143,7 +143,13 @@ class SportObject extends Component {
     if (localStorage.getItem('userBlocked') === 'true') {
       errorMsg = (
         <div class="block-error">
-          <h5 className="h5-grey">You are blocked and you can't add reservation</h5>
+          <h5>You are blocked and you can't add reservation</h5>
+        </div>
+      )
+    } else if (localStorage.getItem('userType') === 'ANIMATOR') {
+      errorMsg = (
+        <div class="block-error">
+          <h5>Create USER account to add a reservation</h5>
         </div>
       )
     }
