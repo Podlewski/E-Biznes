@@ -81,12 +81,16 @@ class MyObjects extends Component {
     return (
       <>
         <LoggedNavigation />
-        <input type="text" placeholder="Search" onChange={e => this.search(e)} />
-        <button>
-          <Link to="/newObject">Add Facility</Link>
-        </button>
-        <div className="MyObjects">
-          {this.createGridPanel()}
+        <div className="defaultWrapper">
+          <div className="row text-center">
+            <input type="text" className="wideSearch mr-3" placeholder="Search" onChange={e => this.search(e)} />
+            <Link to="/newObject">
+              <button class="butt">Add Facility</button>
+            </Link>
+          </div>
+          <div className="searchableObjects">
+            {this.createGridPanel()}
+          </div>
         </div>
       </>
     )

@@ -89,7 +89,7 @@ class SearchObjects extends Component {
             <h6 className="my-auto mr-3">City filters:</h6>
             {this.createCategories()}
           </div>
-          <div className="searchObjects">
+          <div className="searchableObjects">
             <h4 className="text-center">Results:</h4>
             {this.createGridPanel()}
           </div>

@@ -85,7 +85,7 @@ class Reports extends Component {
           <div className="row text-center pb-3">
             <input type="text" className="wideSearch" placeholder="Search" onChange={e => this.search(e)} />
           </div>
-          <div className="searchReports">
+          <div className="searchableObjects">
             <h4 className="text-center">Results:</h4>
             {this.createGridPanel()}
           </div>

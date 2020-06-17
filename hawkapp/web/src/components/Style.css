@@ -22,3 +22,20 @@
   width: 800px;
   margin-bottom: 16px;
 }
+
+.butt {
+  height: 100%;
+  background-color: #98c67d;
+  color: #fff;
+  border: 2px solid #fff;
+  font-size: 1em;
+  font-weight: lighter;
+  letter-spacing: 1px;
+  border: 2px solid #98c67d;
+}
+
+.butt:hover {
+  color: #98c67d;
+  background-color: #fff;
+  border: 2px solid #98c67d;
+}
