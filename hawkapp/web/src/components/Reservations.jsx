@@ -57,9 +57,11 @@ class Reservations extends Component {
       title = (
         <div>
           <h1>You have no reservations.</h1>
-          <Link to={{ pathname: `searchObjects` }}>
-            Make some!
-          </Link>
+          <div className="text-center mt-3">
+            <Link to={{ pathname: `searchObjects` }}>
+              Make some!
+            </Link>
+          </div>
         </div>
       );
     } else {
