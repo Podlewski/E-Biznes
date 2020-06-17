@@ -106,6 +106,7 @@ input.error {
 .phoneNumber,
 .password,
 .objectName,
+.field,
 .fullField,
 .leftField,
 .rightField {
@@ -118,9 +119,16 @@ input.error {
 .lastName,
 .birthDate,
 .phoneNumber,
-.leftField,
-.rightField {
+.halfField {
   width: 49%;
+}
+
+.bigField {
+  width: 74%;
+}
+
+.smallField {
+  width: 24%;
 }
 
 .userTypeSwitch,

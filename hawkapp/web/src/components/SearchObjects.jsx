@@ -20,7 +20,7 @@ class SearchObjects extends Component {
 
   createCategories() {
     return this.state.categories.map(category => (
-      <button className="btn-category mx-1" key={category} onClick={() => this.setCategory(category)}>
+      <button className="btn-category mx-1 butt" key={category} onClick={() => this.setCategory(category)}>
         {category}
       </button>
     ))

@@ -10,13 +10,13 @@ function Home() {
       <Navigation />
       <div className="home">
         <AwesomeSlider bullets={false} > 
-          <div data-src="./img/football.jpg">
-            <p>I want to see what you got.</p>
-          </div>
-          <div data-src="./img/basketball.jpg" >
+          <div data-src="./img/basketball.jpg">
             <p>I want to see what you got.</p>
           </div>
           <div data-src="./img/tenis.jpg" >
+            <p>I want to see what you got.</p>
+          </div>
+          <div data-src="./img/football.jpg" >
             <p>I want to see what you got.</p>
           </div>
         </AwesomeSlider>

@@ -17,14 +17,12 @@
   width: 500px;
 }
 
-.searchObjects > div,
-.searchReports > div {
+.searchableObjects > div {
   width: 800px;
   margin-bottom: 16px;
 }
 
 .butt {
-  height: 100%;
   background-color: #98c67d;
   color: #fff;
   border: 2px solid #fff;
@@ -32,6 +30,10 @@
   font-weight: lighter;
   letter-spacing: 1px;
   border: 2px solid #98c67d;
+}
+
+.butt-h {
+  height: 100%;
 }
 
 .butt:hover {

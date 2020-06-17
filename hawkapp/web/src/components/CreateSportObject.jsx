@@ -89,12 +89,12 @@ class CreateSportObject extends Component {
           <div class="object-wrapper">
             <form onSubmit={this.handleSubmit}>
             {errorMsg}
-              <div className="email">
+              <div className="field bigField leftField">
                 <label htmlFor="name">Object Name</label>
                 <input type="text" className={formErrors.name.length > 0 ? "error" : null} placeholder="Object Name" name="name" onChange={this.handleChange} />
                 {formErrors.name.length > 0 && (<span className="errorMessage">{formErrors.name}</span>)}
               </div>
-              <div className="fullField">
+              <div className="smallField rightField my-auto">
                 <select id="myList" onChange={this.setSport}>
                   <option value="0">Volleyball</option>
                   <option value="1">Basketball</option>
@@ -103,27 +103,27 @@ class CreateSportObject extends Component {
                   <option value="4">Dance</option>
                 </select>
               </div>
-              <div className="leftField">
+              <div className="halfField leftField">
                 <label htmlFor="phone">Phone number</label>
                 <input type="text" className={formErrors.phone.length > 0 ? "error" : null} placeholder="Phone" name="phone" onChange={this.handleChange} />
                 {formErrors.phone.length > 0 && (<span className="errorMessage">{formErrors.phone}</span>)}
               </div>
-              <div className="rightField">
+              <div className="halfField rightField">
                 <label htmlFor="price">Price</label>
                 <input type="text" pattern="[0-9]*" className={formErrors.price.length > 0 ? "error" : null} placeholder="Price" name="price" onChange={this.handleChange} />
                 {formErrors.price.length > 0 && (<span className="errorMessage">{formErrors.price}</span>)}
               </div>
               <div className="fullField">
                 <label htmlFor="address">Address</label>
-                <input type="text" className={formErrors.address.length > 0 ? "error" : null} placeholder="address" name="address" onChange={this.handleChange} />
+                <input type="text" className={formErrors.address.length > 0 ? "error" : null} placeholder="Street with number" name="address" onChange={this.handleChange} />
                 {formErrors.address.length > 0 && (<span className="errorMessage">{formErrors.address}</span>)}
               </div>
-              <div className="leftField">
+              <div className="halfField leftField">
                 <label htmlFor="postalCode">Postal Code</label>
                 <input type="text" className={formErrors.postCode.length > 0 ? "error" : null} placeholder="Postal Code" name="postCode" onChange={this.handleChange} />
                 {formErrors.postCode.length > 0 && (<span className="errorMessage">{formErrors.postCode}</span>)}
               </div>
-              <div className="rightField">
+              <div className="halfField rightField">
                 <label htmlFor="city">City</label>
                 <input type="text" className={formErrors.city.length > 0 ? "error" : null} placeholder="City" name="city" onChange={this.handleChange} />
                 {formErrors.city.length > 0 && (<span className="errorMessage">{formErrors.city}</span>)}

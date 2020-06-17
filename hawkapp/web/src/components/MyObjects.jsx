@@ -85,7 +85,7 @@ class MyObjects extends Component {
           <div className="row text-center">
             <input type="text" className="wideSearch mr-3" placeholder="Search" onChange={e => this.search(e)} />
             <Link to="/newObject">
-              <button class="butt">Add Facility</button>
+              <button class="butt butt-h">Add Facility</button>
             </Link>
           </div>
           <div className="searchableObjects">
