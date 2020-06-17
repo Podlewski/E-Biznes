@@ -19,7 +19,6 @@ function Footer() {
           <div class="col px-1">
               <p class="mb-2 text-white-50 small">NIP: 0123456789</p>
               <p class="mb-2 text-white-50 small">REGON: 123456789</p>
-              <p class="mb-2 text-white-50 small">KRS: 0123456789</p>
           </div>
         </div>
         <div class="container pt-3">
