@@ -1,9 +1,10 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+import "./Style.css";
 
 function userNavigation(props) {
   return (
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto text-18">
       <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
         <Link class="nav-link" to="/SearchObjects">Search</Link>
       </li>
@@ -25,7 +26,7 @@ function userNavigation(props) {
 
 function adminNavigation(props) {
   return (
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto text-18">
       <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
         <Link class="nav-link" to="/SearchObjects">Search</Link>
       </li>
@@ -46,7 +47,7 @@ function adminNavigation(props) {
 
 function animatorNavigation(props) {
   return(
-  <ul class="navbar-nav ml-auto">
+  <ul class="navbar-nav ml-auto text-18">
   <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
     <Link class="nav-link" to="/SearchObjects">Search</Link>
   </li>
@@ -78,7 +79,7 @@ function LoggedNavigation(props) {
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <div>
-            <Link class="navbar-brand" to="/SearchObjects"><img src={"/logo192.png"} alt="Jastrzębik logo" style={{ height: 40, marginTop: -7, marginRight: 10 }} />Jastrzębik</Link>
+            <Link class="navbar-brand text-25" to="/SearchObjects"><img src={"/logo192.png"} alt="Jastrzębik logo" style={{ height: 60, marginTop: -7, marginRight: 15 }}/>Jastrzębik</Link>
           </div>
           {content}
         </div>

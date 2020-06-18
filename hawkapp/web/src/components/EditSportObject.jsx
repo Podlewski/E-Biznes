@@ -159,25 +159,25 @@ class EditSportObject extends Component {
             <div class="row pb-5">
               <div class="col-sm">
                 <div class="block">
-                  <h5>Object Name</h5>
+                  <h5 className="h5-grey">Object Name</h5>
                   <h4>{this.state.name}</h4>
                 </div>
                 <div class="block">
-                  <h5>Sport type</h5>
+                  <h5 className="h5-grey">Sport type</h5>
                   <h4>{this.state.sport}</h4>
                 </div>
                 <div class="block">
-                  <h5>Address</h5>
+                  <h5 className="h5-grey">Address</h5>
                   <h4>{this.state.address}</h4>
                 </div>
-                <div class="block">
-                  <h5>Phone number</h5>
+                <div>
+                  <h5 className="h5-grey">Phone number</h5>
                   <h4>{this.state.phone}</h4>
                 </div>
               </div>
               <div class="col-sm">
                 <div class="block">
-                  <h5>Price</h5>
+                  <h5 className="h5-grey">Price</h5>
                   <h4>{this.state.price} PLN/H</h4>
                 </div>
                 {this.pictogram(this.state.sport)}              </div>

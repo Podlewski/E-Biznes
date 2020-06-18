@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, withRouter } from "react-router-dom";
+import "./Style.css"
 
 function Navigation(props) {
   return (
@@ -7,9 +8,9 @@ function Navigation(props) {
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <div>
-            <Link class="navbar-brand" to="/"><img src={"/logo192.png"} alt="Jastrzębik logo" style={{height:40, marginTop: -7, marginRight: 10}} />Jastrzębik</Link>
+            <Link class="navbar-brand text-25" to="/"><img src={"/logo192.png"} alt="Jastrzębik logo" style={{height: 60, marginTop: -7, marginRight: 15}} />Jastrzębik</Link>
           </div>
-          <ul class="navbar-nav ml-auto">
+          <ul class="navbar-nav ml-auto text-18">
             <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
               <Link class="nav-link" to="/register">Register</Link>
             </li>
