@@ -47,8 +47,9 @@ public class ReservationServiceImpl extends BaseServiceImpl<ReservationRepositor
             throw new InvalidParameterException();
         }
 
-        if (repository.existsByReservationDateBetweenOrEndDateBetweenAndStatusIsNot(reservation.getReservationDate(),
-                reservation.getEndDate(), reservation.getReservationDate(), reservation.getEndDate(), ReservationStatus.CANCELLED)) {
+        if (repository.existsByReservationDateBetweenOrEndDateBetweenAndStatusIsNotAndFacilityId(reservation.getReservationDate(),
+                reservation.getEndDate(), reservation.getReservationDate(), reservation.getEndDate(), ReservationStatus.CANCELLED,
+                reservation.getFacilityId())) {
             throw new InvalidParameterException();
         }
 

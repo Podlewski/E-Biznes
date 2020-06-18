@@ -48,18 +48,36 @@ function pictogram(sport) {
   }
 }
 
+function cancelReservation (id) {
+  var jsonStatus = { status: "CANCELLED" }
 
-function SingleReservation({ reservation }) {
+  fetch('http://localhost:8080/reservation/' + id,
+  {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(jsonStatus)
+  }).then((response) => {
+    if (response.ok) {
+    }
+  });
+}
+
+function SingleReservation({ reservation },props) {
 
   const classes = useStyles();
   Moment.locale('en');
 
+  var cancelButton;
   var printStatus;
   if (reservation.status == "NOT_PAYED") {
     printStatus = (
       <a href="https://www.paypal.com/pl/signin">PAY FOR YOUR RESERVATION!</a>
     )
-
+    cancelButton = (
+      <button color="RED" onClick={() => cancelReservation(reservation.id)}>
+        CANCEL
+      </button>
+    )
   } else if (reservation.status == "PAYED") {
     printStatus = (
       <div>
@@ -101,6 +119,9 @@ function SingleReservation({ reservation }) {
                 <Typography variant="body2" color="textSecondary">
                   {printStatus}
                 </Typography>
+                {/* <Typography variant="body2" color="textSecondary">
+                  {cancelButton}
+                </Typography> */}
               </Grid>
             </Grid>
             <Grid item>

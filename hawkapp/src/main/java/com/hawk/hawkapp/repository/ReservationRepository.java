@@ -10,7 +10,8 @@ import java.util.List;
 
 @Repository
 public interface ReservationRepository extends JpaRepository<Reservation, Long> {
-    boolean existsByReservationDateBetweenOrEndDateBetweenAndStatusIsNot(Date dateFrom, Date dateTo, Date dateFrom2, Date dateTo2, ReservationStatus status);
+    boolean existsByReservationDateBetweenOrEndDateBetweenAndStatusIsNotAndFacilityId(Date dateFrom, Date dateTo,
+                                                                                      Date dateFrom2, Date dateTo2, ReservationStatus status, Long facilityId);
 
     List<Reservation> getByUserId(Long userId);
 }
