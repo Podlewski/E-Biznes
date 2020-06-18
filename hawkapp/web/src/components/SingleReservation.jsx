@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import Moment from 'moment';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Button from '@material-ui/core/Button';
-
+import "./Style.css"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -84,13 +84,13 @@ function SingleReservation({ reservation }) {
   var printStatus;
   if (reservation.status == "NOT_PAYED" && !cancelled) {
     printStatus = (
-      <div>
+      <div className="text-center">
         <br />
         <a href="https://www.paypal.com/pl/signin">PAY FOR YOUR RESERVATION</a>
       </div>
     )
     cancelButton = (
-      <div>
+      <div className="text-center">
         <br />
         <Button variant="contained" color="secondary" onClick={() => {
           cancelReservation(reservation.id);
@@ -102,13 +102,13 @@ function SingleReservation({ reservation }) {
     )
   } else if (reservation.status == "PAYED") {
     printStatus = (
-      <div>
+      <div className="text-center">
         <h2>PAYED</h2>
       </div>)
   } else {
     printStatus = (
-      <div>
-        <h2 color="red">CANCELLED</h2>
+      <div className="text-center">
+        <h2>CANCELLED</h2>
       </div>)
   }
 

@@ -1,3 +1,12 @@
+.home {
+  min-height: 69vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: center;
+}
+
 .defaultWrapper {
   min-height: 100vh;
   max-height: 100%;
@@ -21,6 +30,11 @@
   width: 750px;
 }
 
+.searchable-small-objects > div {
+  width: 600px;
+  margin-bottom: 16px;
+}
+
 .searchableObjects > div {
   width: 1000px;
   margin-bottom: 16px;
@@ -41,6 +55,12 @@
   height: 100%;
 }
 
+.butt-m {
+  font-size: 20px;
+  width: 400px;
+  height: 50px;
+}
+
 .butt:hover {
   color: #98c67d;
   background-color: #fff;
@@ -53,4 +73,14 @@
 
 .text-18 {
   font-size: 18px;
+}
+
+.col-50 {
+  width: 49%;
+}
+
+.center-column {
+  height: 100%;
+
+  margin: auto;
 }

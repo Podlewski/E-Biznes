@@ -14,10 +14,11 @@ function userNavigation(props) {
       <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
         <Link class="nav-link" to="/accountData">Account data</Link>
       </li>
+      <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+        <Link class="nav-link" to="/regulations">Regulations</Link>
+      </li>
       <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>
-        <Link class="nav-link" to="/logout">
-          Log Out
-        </Link>
+        <Link class="nav-link" to="/logout">Log Out</Link>
       </li>
     </ul>
   )
@@ -36,10 +37,11 @@ function adminNavigation(props) {
       <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
         <Link class="nav-link" to="/accountData">Account data</Link>
       </li>
+      <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+        <Link class="nav-link" to="/regulations">Regulations</Link>
+      </li>
       <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>
-        <Link class="nav-link" to="/logout">
-          Log Out
-        </Link>
+        <Link class="nav-link" to="/logout">Log Out</Link>
       </li>
     </ul>
   )
@@ -47,22 +49,23 @@ function adminNavigation(props) {
 
 function animatorNavigation(props) {
   return(
-  <ul class="navbar-nav ml-auto text-18">
-  <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
-    <Link class="nav-link" to="/SearchObjects">Search</Link>
-  </li>
-  <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
-    <Link class="nav-link" to="/myObjects">My Facilities</Link>
-  </li>
-  <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
-    <Link class="nav-link" to="/accountData">Account data</Link>
-  </li>
-  <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>
-    <Link class="nav-link" to="/logout">
-      Log Out
-    </Link>
-  </li>
-</ul>
+    <ul class="navbar-nav ml-auto text-18">
+      <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+        <Link class="nav-link" to="/SearchObjects">Search</Link>
+      </li>
+      <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+        <Link class="nav-link" to="/myObjects">My Facilities</Link>
+      </li>
+      <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+        <Link class="nav-link" to="/accountData">Account data</Link>
+      </li>
+      <li class={`nav-item  ${props.location.pathname === "/register" ? "active" : ""}`}>
+        <Link class="nav-link" to="/regulations">Regulations</Link>
+      </li>
+      <li class={`nav-item  ${props.location.pathname === "/login" ? "active" : ""}`}>
+        <Link class="nav-link" to="/logout">Log Out</Link>
+      </li>
+    </ul>
   )
 }
 
