@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -6,6 +6,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Moment from 'moment';
 import ButtonBase from '@material-ui/core/ButtonBase';
+import Button from '@material-ui/core/Button';
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,35 +50,55 @@ function pictogram(sport) {
   }
 }
 
-function cancelReservation (id) {
+var cancelled = false;
+
+function cancelReservation(id) {
   var jsonStatus = { status: "CANCELLED" }
 
   fetch('http://localhost:8080/reservation/' + id,
-  {
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(jsonStatus)
-  }).then((response) => {
-    if (response.ok) {
-    }
-  });
+    {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(jsonStatus)
+    }).then((response) => {
+      if (response.ok) {
+      }
+    });
+  cancelled = true;
 }
 
-function SingleReservation({ reservation },props) {
+
+function useForceUpdate() {
+  const [value, setValue] = useState(0); // integer state
+  return () => setValue(value => ++value); // update the state to force render
+}
+
+function SingleReservation({ reservation }) {
 
   const classes = useStyles();
   Moment.locale('en');
 
+  const forceUpdate = useForceUpdate();
+
   var cancelButton;
   var printStatus;
-  if (reservation.status == "NOT_PAYED") {
+  if (reservation.status == "NOT_PAYED" && !cancelled) {
     printStatus = (
-      <a href="https://www.paypal.com/pl/signin">PAY FOR YOUR RESERVATION!</a>
+      <div>
+        <br />
+        <a href="https://www.paypal.com/pl/signin">PAY FOR YOUR RESERVATION</a>
+      </div>
     )
     cancelButton = (
-      <button color="RED" onClick={() => cancelReservation(reservation.id)}>
-        CANCEL
-      </button>
+      <div>
+        <br />
+        <Button variant="contained" color="secondary" onClick={() => {
+          cancelReservation(reservation.id);
+          forceUpdate()
+        }}>
+          CANCEL
+      </Button>
+      </div>
     )
   } else if (reservation.status == "PAYED") {
     printStatus = (
@@ -119,9 +141,9 @@ function SingleReservation({ reservation },props) {
                 <Typography variant="body2" color="textSecondary">
                   {printStatus}
                 </Typography>
-                {/* <Typography variant="body2" color="textSecondary">
+                <Typography variant="body2" color="textSecondary">
                   {cancelButton}
-                </Typography> */}
+                </Typography>
               </Grid>
             </Grid>
             <Grid item>
