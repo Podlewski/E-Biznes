@@ -1,8 +1,8 @@
 # E-Biznes
 
-<img src="https://static.dwcdn.net/css/flag-icons/flags/4x3/gb.svg" height="10" width="20">E-Business classes at Lodz University of Technology (TUL)
+<img src="https://static.dwcdn.net/css/flag-icons/flags/4x3/pl.svg" height="10" width="20"> Laboratoria z **E-Biznesu** na Politechnice Łódzkiej (PŁ). Więcej informacji o przedmiocie: [karta przedmiotu](https://programy.p.lodz.pl/ectslabel-web/przedmiot_3.jsp?l=pl&idPrzedmiotu=172761&pkId=1149&s=1&t=1&j=0&w=informatyka%20stosowana).
 
-Więcej informacji o przedmiocie: [karta przedmiotu](https://programy.p.lodz.pl/ectslabel-web/przedmiot_3.jsp?l=pl&idPrzedmiotu=172761&pkId=1149&s=1&t=1&j=0&w=informatyka%20stosowana)
+<img src="https://static.dwcdn.net/css/flag-icons/flags/4x3/gb.svg" height="10" width="20"> **E-Business** classes at Lodz University of Technology (TUL).
 
 ---
 
